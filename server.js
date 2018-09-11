@@ -11,6 +11,7 @@ var flash = require('connect-flash');
 var expressMessages = require('express-messages');
 var { SESSION_SECRET } = process.env;
 var routes = require('./controllers');
+app.use(routes);
 app.use(express.static('public'));
 
 //Express native body parser middleware
@@ -38,8 +39,6 @@ app.use((req, res, next) => {
   res.locals.messages = expressMessages(req, res);
   next();
 });
-
-app.use(routes);
 
 app.listen(PORT, function() {
   console.log('class-app is listening on port', PORT);
