@@ -11,8 +11,6 @@ var flash = require('connect-flash');
 var expressMessages = require('express-messages');
 var { SESSION_SECRET } = process.env;
 
-app.use(express.static('public'));
-
 var routes = require('./controllers');
 var signup = require('./controllers/signup');
 var login = require('./controllers/login');
@@ -23,24 +21,7 @@ var students = require('./controllers/api/students');
 var myClasses = require('./controllers/myClasses');
 var availableClasses = require('./controllers/availableClasses');
 
-app.use(routes);
-app.use('/signup', signup);
-app.use('/login', login);
-app.use('/logout', logout);
-app.use('/api/classes', classes);
-app.use('/api/semesters', semesters);
-app.use('/api/students', students);
-app.use('/my-classes', myClasses);
-app.use('/available-classes', availableClasses);
-
-//Express native body parser middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
-
-app.use(cookieParser);
+app.use(express.static('public'));
 
 app.use(
   session({
@@ -50,14 +31,33 @@ app.use(
   })
 );
 
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use(flash());
 app.use(function(req, res, next) {
   res.locals.messages = expressMessages(req, res);
   next();
 });
+
+//Express native body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// app.use(cookieParser);
+
+app.use(routes);
+app.use('/signup', signup);
+app.use('/login', login);
+app.use('/logout', logout);
+app.use('/api/classes', classes);
+app.use('/api/semesters', semesters);
+app.use('/api/students', students);
+app.use('/my-classes', myClasses);
+app.use('/available-classes', availableClasses);
 
 app.listen(PORT, function() {
   console.log('class-app is listening on port', PORT);

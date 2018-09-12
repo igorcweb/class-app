@@ -1,8 +1,9 @@
 var express = require('express');
-var orm = require('../config/orm');
 var router = express.Router();
+var ensureAuthenticated = require('../helpers/authMiddleware')
+  .ensureAuthenticated;
 
-router.get('/', function(req, res) {
+router.get('/', ensureAuthenticated, function(req, res) {
   res.render('index', {
     urlPath: req.baseUrl
   });
