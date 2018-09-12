@@ -29,7 +29,7 @@ router.post('/', function(req, res) {
       console.log(req.body);
       if (!err) {
         req.flash('success', 'You are now registered and can log in');
-        res.redirect('/login');
+        res.redirect('login');
       } else {
         req.flash('error', err.message);
         res.render('signup', { error: err.message });
@@ -42,7 +42,7 @@ router.post('/', function(req, res) {
 //   console.log(result);
 // });
 
-// student.insertOne(
+// Student.insertOne(
 //   'students',
 //   ['first_name', 'last_name', 'email', 'password'],
 //   ['John', 'Doe', 'jdoe@email.com', 'asdfasdf'],
@@ -50,4 +50,5 @@ router.post('/', function(req, res) {
 //     console.log(result);
 //   }
 // );
+
 module.exports = router;
