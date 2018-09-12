@@ -2,8 +2,9 @@ var express = require('express');
 var orm = require('../config/orm');
 var router = express.Router();
 var Joi = require('joi');
+var bcrypt = require('bcryptjs');
 
-var Student = require('../models/student');
+var student = require('../models/student');
 var schema = require('../controllers/joiSchema');
 
 router.get('/', function(req, res) {
@@ -14,7 +15,7 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
   var condition = 'email = "' + req.body.email + '"';
-  Student.findOne('email', 'students', condition, function(result) {
+  student.findOne('email', 'students', condition, function(result) {
     if (result[0]) {
       req.flash(
         'error',
@@ -26,7 +27,31 @@ router.post('/', function(req, res) {
       return;
     }
     Joi.validate(req.body, schema, function(err) {
-      console.log(req.body);
+      var newStudent = {
+        first_name: req.body.firstname,
+        last_name: req.body.lastname,
+        email: req.body.email,
+        password: req.body.password
+      };
+
+      bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(newStudent.password, salt, function(err, hash) {
+          if (err) {
+            throw err;
+          }
+          newStudent.password = hash;
+          var { first_name, last_name, email, password } = newStudent;
+          student.insertOne(
+            'students',
+            ['first_name', 'last_name', 'email', 'password'],
+            [first_name, last_name, email, password],
+            function(result) {
+              console.log(result);
+            }
+          );
+        });
+      });
+
       if (!err) {
         req.flash('success', 'You are now registered and can log in');
         res.redirect('login');
@@ -42,7 +67,7 @@ router.post('/', function(req, res) {
 //   console.log(result);
 // });
 
-// Student.insertOne(
+// student.insertOne(
 //   'students',
 //   ['first_name', 'last_name', 'email', 'password'],
 //   ['John', 'Doe', 'jdoe@email.com', 'asdfasdf'],
