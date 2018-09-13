@@ -47,8 +47,6 @@ app.set('view engine', 'handlebars');
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use(cookieParser);
-
 app.use(routes);
 app.use('/signup', signup);
 app.use('/login', login);
@@ -58,7 +56,7 @@ app.use('/api/semesters', semesters);
 app.use('/api/students', students);
 app.use('/my-classes', myClasses);
 app.use('/available-classes', availableClasses);
-
+app.use(cookieParser);
 app.listen(PORT, function() {
   console.log('class-app is listening on port', PORT);
 });
