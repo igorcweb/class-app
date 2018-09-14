@@ -2,11 +2,12 @@ var express = require('express');
 var router = express.Router();
 var Joi = require('joi');
 var bcrypt = require('bcryptjs');
+var ensureLoggedOut = require('../helpers/authMiddleware').ensureLoggedOut;
 
 var Student = require('../models/student');
 var schema = require('../controllers/joiSchema');
 
-router.get('/', function(req, res) {
+router.get('/', ensureLoggedOut, function(req, res) {
   res.render('signup', {
     urlPath: req.baseUrl
   });

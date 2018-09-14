@@ -9,8 +9,8 @@ var Student = require('../models/student');
 router.get('/', ensureLoggedOut, function(req, res) {
   res.render('login', {
     urlPath: req.baseUrl,
-    // success: req.flash('success'),
-    loggedOut: req.flash('loggedOut')
+    success: req.flash('success'),
+    error: req.flash('error')
   });
 });
 
@@ -57,16 +57,25 @@ passport.use(
   )
 );
 
+// router.post(
+//   '/',
+//   passport.authenticate('local', {
+//     failureRedirect: '/login',
+//     failureFlash: 'Invalid email or password'
+//   }),
+//   function(req, res) {
+//     req.flash('success', ' You are now logged in');
+//     res.redirect('/');
+//   }
+// );
 router.post(
   '/',
   passport.authenticate('local', {
     failureRedirect: '/login',
-    failureFlash: 'Invalid email or password'
-  }),
-  function(req, res) {
-    req.flash('success', ' You are now logged in');
-    res.redirect('/');
-  }
+    successRedirect: '/',
+    failureFlash: 'Invalid email or password',
+    successFlash: 'You are now logged in!'
+  })
 );
 
 module.exports = router;

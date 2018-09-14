@@ -4,9 +4,11 @@ var ensureAuthenticated = require('../helpers/authMiddleware')
   .ensureAuthenticated;
 
 router.get('/', ensureAuthenticated, function(req, res) {
+  var { first_name, last_name } = req.user[0];
   res.render('index', {
     urlPath: req.baseUrl,
-    successFlash: 'You are now logged in'
+    success: req.flash('success'),
+    studentName: `${first_name} ${last_name}`
   });
 });
 
