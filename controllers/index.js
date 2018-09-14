@@ -5,7 +5,8 @@ var ensureAuthenticated = require('../helpers/authMiddleware')
 
 router.get('/', ensureAuthenticated, function(req, res) {
   res.render('index', {
-    urlPath: req.baseUrl
+    urlPath: req.baseUrl,
+    successFlash: 'You are now logged in'
   });
 });
 

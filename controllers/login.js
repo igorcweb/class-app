@@ -9,8 +9,7 @@ var Student = require('../models/student');
 router.get('/', ensureLoggedOut, function(req, res) {
   res.render('login', {
     urlPath: req.baseUrl,
-    success: req.flash('success'),
-    loggedin: req.flash('loggedin')
+    success: req.flash('success')
   });
 });
 
@@ -32,56 +31,30 @@ passport.use(
     },
     function(email, password, done) {
       var condition = 'email = "' + email + '"';
-      Student.findOne('email, password', 'students', condition, function(
-        student
-      ) {
+      Student.findOne('*', 'students', condition, function(results) {
+        if (!results[0]) {
+          console.log('Unknown Username');
+          return done(null, false, { message: 'Unknown Username' });
+        }
+        var student = results[0];
         var studentPassword = student.password;
-        bcrypt.compare(password, studentPassword, function(err, isMatch) {
-          if (err) {
-            console.log(err);
-            return;
-          }
-          if (!isMatch) {
-            return done(null, false, {
-              message: 'Invalid Password'
-            });
-          }
-          return done(null, student);
-        });
+        bcrypt
+          .compare(password, studentPassword)
+          .then(function(isMatch) {
+            if (isMatch) {
+              console.log('isMatch:', isMatch);
+              return done(null, student);
+            }
+            console.log('isMatch:', isMatch);
+            return done(null, false, { message: 'Incorrect Password' });
+          })
+          .catch(function(err) {
+            console.log('catch:', err);
+          });
       });
     }
   )
 );
-
-var candidate = {
-  email: 'igorchern07@gmail.com',
-  password: 'asdfasdf'
-};
-
-// var { email, password } = candidate;
-// function compare() {
-//   var condition = 'email = "' + email + '"';
-//   Student.findOne('email, password', 'students', condition, function(student) {
-//     console.log(student);
-//     console.log('arguments: ', password, candidate.password);
-
-//     bcrypt.compare(
-//       '$2a$10$4OeOs.qQMyNNORcMgpsB/eWF7I.5pkbo1FAwGbqZSxSvULFREdpIi',
-//       password,
-//       function(err, isMatch) {
-//         if (err) {
-//           console.log('something went wrong', err);
-//         } else if (!isMatch) {
-//           console.log('passwords do not match');
-//         } else {
-//           console.log('matched!');
-//         }
-//       }
-//     );
-//   });
-// }
-
-// compare();
 
 router.post(
   '/',
@@ -89,8 +62,8 @@ router.post(
     failureRedirect: '/login',
     failureFlash: 'Invalid email or password'
   }),
-  (req, res) => {
-    req.flash('loggedin', ' You are now logged in');
+  function(req, res) {
+    req.flash('success', ' You are now logged in');
     res.redirect('/');
   }
 );

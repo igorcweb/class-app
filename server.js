@@ -30,6 +30,8 @@ app.use(
     resave: true
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(flash());
 app.use(function(req, res, next) {
@@ -43,9 +45,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(routes);
 app.use('/signup', signup);
