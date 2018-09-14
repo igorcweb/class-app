@@ -9,7 +9,8 @@ var Student = require('../models/student');
 router.get('/', ensureLoggedOut, function(req, res) {
   res.render('login', {
     urlPath: req.baseUrl,
-    success: req.flash('success')
+    // success: req.flash('success'),
+    loggedOut: req.flash('loggedOut')
   });
 });
 
@@ -20,7 +21,7 @@ passport.serializeUser(function(student, done) {
 passport.deserializeUser(function(id, done) {
   var condition = 'id = ' + id;
   Student.findOne('*', 'students', condition, function(student) {
-    done(student);
+    done(null, student);
   });
 });
 
