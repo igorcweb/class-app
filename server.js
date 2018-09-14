@@ -21,7 +21,16 @@ var students = require('./controllers/api/students');
 var myClasses = require('./controllers/myClasses');
 var availableClasses = require('./controllers/availableClasses');
 
+//Express native body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
 app.use(express.static('public'));
+
+app.use(cookieParser());
 
 app.use(
   session({
@@ -30,24 +39,14 @@ app.use(
     resave: true
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(flash());
 app.use(function(req, res, next) {
   res.locals.messages = expressMessages(req, res);
   next();
 });
-
-//Express native body parser middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-// app.use(cookieParser);
 
 app.use(routes);
 app.use('/signup', signup);
@@ -58,6 +57,7 @@ app.use('/api/semesters', semesters);
 app.use('/api/students', students);
 app.use('/my-classes', myClasses);
 app.use('/available-classes', availableClasses);
+app.use(cookieParser);
 
 app.listen(PORT, function() {
   console.log('class-app is listening on port', PORT);

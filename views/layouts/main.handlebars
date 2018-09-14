@@ -14,8 +14,9 @@
 </head>
 
 <body>
-  {{!-- Write your template code here --}}
-
+  {{#if error}}
+  <div class="alert">{{ error }}</div>
+  {{/if}}
   {{{body}}}
 </body>
 <script src="/assets/js/main.js"></script>
