@@ -57,17 +57,6 @@ passport.use(
   )
 );
 
-// router.post(
-//   '/',
-//   passport.authenticate('local', {
-//     failureRedirect: '/login',
-//     failureFlash: 'Invalid email or password'
-//   }),
-//   function(req, res) {
-//     req.flash('success', ' You are now logged in');
-//     res.redirect('/');
-//   }
-// );
 router.post(
   '/',
   passport.authenticate('local', {

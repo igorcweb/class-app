@@ -17,10 +17,10 @@ router.post('/', function(req, res) {
   var condition = 'email = "' + req.body.email + '"';
   Joi.validate(req.body, schema, function(err) {
     var newStudent = {
-      first_name: req.body.firstname,
-      last_name: req.body.lastname,
-      email: req.body.email,
-      password: req.body.password
+      first_name: req.body.firstname.trim(),
+      last_name: req.body.lastname.trim(),
+      email: req.body.email.trim(),
+      password: req.body.password.trim()
     };
     if (!err) {
       Student.findOne('email', 'students', condition, function(result) {
