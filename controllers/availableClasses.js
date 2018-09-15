@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+
+//Only run this code to reseed classes data after recreating the database.
+
 // var Class = require('../models/class');
 // var classes = require('../db/classes');
 
-//Only run this code to reseed classes data after recreating the database.
 // classes.forEach(function(classObj) {
 //   var { name, code, semester, description } = classObj;
 //   Class.insertOne(
