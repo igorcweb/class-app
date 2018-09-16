@@ -19,7 +19,7 @@ var classes = require('./controllers/api/classes');
 var semesters = require('./controllers/api/semesters');
 var students = require('./controllers/api/students');
 var myClasses = require('./controllers/myClasses');
-var availableClasses = require('./controllers/availableClasses');
+var catalogue = require('./controllers/catalogue');
 
 //Express native body parser middleware
 app.use(express.json());
@@ -56,7 +56,7 @@ app.use('/api/classes', classes);
 app.use('/api/semesters', semesters);
 app.use('/api/students', students);
 app.use('/my-classes', myClasses);
-app.use('/available-classes', availableClasses);
+app.use('/catalogue', catalogue);
 app.use(cookieParser);
 
 app.listen(PORT, function() {
