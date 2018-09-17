@@ -57,7 +57,6 @@ app.use('/api/semesters', semesters);
 app.use('/api/students', students);
 app.use('/my-classes', myClasses);
 app.use('/catalogue', catalogue);
-app.use(cookieParser);
 
 app.listen(PORT, function() {
   console.log('class-app is listening on port', PORT);

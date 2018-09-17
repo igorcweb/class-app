@@ -2,10 +2,6 @@
 <input class="d-block mx-auto mb-4 pb-2" type="text" id="filter" placeholder="Search Classes">
 <ul class="classes list-group mx-auto mb-5">
   {{#each classes}}
-  <li class="class-name list-group-item list-group-item-action">{{code}} - {{name}}, {{semester}}</li>
-  <li class="class-content list-group-item">
-    {{description}}
-    <button class="select d-block btn btn-sm btn-primary mt-2" data-class-id="{{id}}">SELECT</button>
-  </li>
+  {{> catalogue/class-block}}
   {{/each}}
 </ul>

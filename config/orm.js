@@ -4,7 +4,6 @@ var printQuestionMarks = require('../helpers/orm').printQuestionMarks;
 var orm = {
   selectAll: function(table, cb) {
     var queryString = 'SELECT * FROM ??';
-    console.log(queryString);
     connection.query(queryString, [table], function(err, result) {
       if (err) {
         throw err;
@@ -21,7 +20,6 @@ var orm = {
     queryString += 'VALUES (';
     queryString += printQuestionMarks(vals.length);
     queryString += ') ';
-    console.log(queryString);
     connection.query(queryString, vals, function(err, result) {
       if (err) {
         throw err;
@@ -33,7 +31,6 @@ var orm = {
     var queryString = 'SELECT ' + col;
     queryString += ' FROM ' + table;
     queryString += ' WHERE ' + condition;
-    console.log(queryString);
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;

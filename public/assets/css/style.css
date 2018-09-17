@@ -15,8 +15,12 @@ ul,
 #filter {
   border: none;
   border-radius: 0;
-  border-bottom: 3px solid #7b93b8;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
   outline: none;
+}
+
+#filter:focus {
+  border-bottom: 3px solid #7b93b8;
 }
 
 li.class-name.is-open {
