@@ -7,8 +7,20 @@ body {
   background-color: #fefefe;
 }
 
-ul {
+ul,
+#filter {
   width: 90%;
+}
+
+#filter {
+  border: none;
+  border-radius: 0;
+  border-bottom: 3px solid #7b93b8;
+  outline: none;
+}
+
+li.class-name.is-open {
+  background-color: #f8f9fa;
 }
 
 li.class-name::before {
@@ -24,6 +36,13 @@ li.class-name.is-open::before {
 
 li.class-name:hover {
   cursor: pointer;
+}
+
+li.class-content {
+  display: none;
+}
+li.class-content.is-open {
+  display: block;
 }
 
 ul.success li {
@@ -74,21 +93,24 @@ div.success {
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-  ul {
+  ul,
+  #filter {
     width: 500px;
   }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  ul {
+  ul,
+  #filter {
     width: 600px;
   }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  ul {
+  ul,
+  #filter {
     width: 650px;
   }
 }
