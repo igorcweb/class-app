@@ -49,6 +49,27 @@ li.class-content.is-open {
   display: block;
 }
 
+button.select {
+  outline: none;
+}
+
+/* Cart */
+.cart {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 350px;
+  margin-right: -350px;
+  transition: 0.3s ease-in-out;
+}
+
+.cart.show {
+  margin-right: 0;
+}
+
+/* Validation Flash Messages */
 ul.success li {
   list-style: none;
   padding: 10px 0;

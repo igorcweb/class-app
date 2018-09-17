@@ -12,12 +12,10 @@ function filterClasses() {
       $(li)
         .addClass('d-block')
         .removeClass('d-none');
-      console.log(li);
     } else {
       $(li)
         .addClass('d-none')
         .removeClass('d-block');
-      console.log(li);
     }
   });
 }
@@ -26,14 +24,24 @@ function filterClasses() {
 var className = $('li.class-name');
 var classes = $('ul.classes');
 className.on('click', function() {
-  console.log('clicked');
-  $(this).toggleClass('is-open');
-  $(this)
-    .next()
-    .toggleClass('is-open');
+  var $this = $(this);
+  $this.toggleClass('is-open');
+  $this.next().toggleClass('is-open');
 });
 
 //Select Button
+var cart = $('.cart');
 classes.on('click', '.select', function() {
-  console.log($(this).data('class-id'));
+  var $this = $(this);
+  $this.toggleClass('selected');
+  if ($this.hasClass('selected')) {
+    $this.text('REMOVE');
+  } else {
+    $this.text('SELECT');
+  }
+  cart.addClass('show');
+});
+// Hide Cart
+$(document).on('click', function(e) {
+  console.log($(e.target).hasClass('class-list'));
 });
