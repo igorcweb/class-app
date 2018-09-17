@@ -1,3 +1,31 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf');
+}
+
+body {
+  background-color: #fefefe;
+}
+
+ul {
+  width: 90%;
+}
+
+li.class-name::before {
+  font-family: 'FontAwesome';
+  content: '\f0da';
+  float: left;
+  margin: 1px 0;
+  margin-right: 6px;
+}
+li.class-name.is-open::before {
+  transform: rotate(90deg);
+}
+
+li.class-name:hover {
+  cursor: pointer;
+}
+
 ul.success li {
   list-style: none;
   padding: 10px 0;
@@ -42,4 +70,29 @@ div.success {
   margin: 10px 0;
   padding: 10px 0;
   text-align: center;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  ul {
+    width: 500px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  ul {
+    width: 600px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  ul {
+    width: 650px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
 }

@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var Class = require('../models/class');
 
 //Only run this code to reseed classes data after running the schema file first.
 
-// var Class = require('../models/class');
 // var classes = require('../db/classes');
 // classes.forEach(function(classObj) {
 //   var { name, code, semester, availableSpaces, description } = classObj;
@@ -18,8 +18,12 @@ var router = express.Router();
 // });
 
 router.get('/', function(req, res) {
-  res.render('catalogue', {
-    urlPath: req.baseUrl
+  Class.selectAll('classes', function(results) {
+    console.log(results[0]);
+    res.render('catalogue', {
+      urlPath: req.baseUrl,
+      classes: results
+    });
   });
 });
 

@@ -7,8 +7,8 @@ var student = {
     });
   },
   selectAll: function(table, cb) {
-    orm.selectAll(table, function(result) {
-      cb(result);
+    orm.selectAll(table, function(results) {
+      cb(results);
     });
   },
   findOne: function(col, table, condition, cb) {
