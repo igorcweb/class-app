@@ -1,54 +1,3 @@
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf');
-}
-
-body {
-  background-color: #fefefe;
-}
-
-ul,
-#filter {
-  width: 90%;
-}
-
-#filter {
-  border: none;
-  border-radius: 0;
-  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
-  outline: none;
-}
-
-#filter:focus {
-  border-bottom: 3px solid #7b93b8;
-}
-
-li.class-name.is-open {
-  background-color: #f8f9fa;
-}
-
-li.class-name::before {
-  font-family: 'FontAwesome';
-  content: '\f0da';
-  float: left;
-  margin: 1px 0;
-  margin-right: 6px;
-}
-li.class-name.is-open::before {
-  transform: rotate(90deg);
-}
-
-li.class-name:hover {
-  cursor: pointer;
-}
-
-li.class-content {
-  display: none;
-}
-li.class-content.is-open {
-  display: block;
-}
-
 ul.success li {
   list-style: none;
   padding: 10px 0;
@@ -84,6 +33,7 @@ div.alert {
   padding: 10px 0;
   text-align: center;
 }
+
 div.success {
   border: 1px solid transparent;
   border-radius: 4px;
@@ -95,30 +45,39 @@ div.success {
   text-align: center;
 }
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-  ul,
-  #filter {
-    width: 500px;
-  }
+.navbar {
+  background-color: #6D83A5;
 }
 
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-  ul,
-  #filter {
-    width: 600px;
-  }
+.navbar button {
+  visibility: hidden;
 }
 
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-  ul,
-  #filter {
-    width: 650px;
-  }
+.navbar a {
+  color: #FFF;
+  font-size: 1.4rem;
 }
 
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
+.navbar img {
+  position: absolute;
+}
+
+.title {
+  margin-left: 150%;
+}
+
+body {
+  background-color: #fcfcfc;
+}
+
+
+
+
+@media only screen and (max-width: 450px) {
+  .navbar img {
+    visibility: hidden;
+  }
+  .navbar button {
+    visibility: visible;
+  }
 }
