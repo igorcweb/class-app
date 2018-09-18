@@ -44,6 +44,10 @@ classes.on('click', '.select', function(e) {
   cart.addClass('show');
   // console.log($(this).data('class-name'));
 });
+
+cart.on('click', function(e) {
+  e.stopPropagation();
+});
 // Hide Cart
 $(document).on('click', function(e) {
   cart.removeClass('show');
