@@ -23,7 +23,8 @@ function filterClasses() {
 //Toggle Class Description
 var className = $('li.class-name');
 var classes = $('ul.classes');
-className.on('click', function() {
+className.on('click', function(e) {
+  e.stopPropagation();
   var $this = $(this);
   $this.toggleClass('is-open');
   $this.next().toggleClass('is-open');
@@ -31,7 +32,8 @@ className.on('click', function() {
 
 //Select Button
 var cart = $('.cart');
-classes.on('click', '.select', function() {
+classes.on('click', '.select', function(e) {
+  e.stopPropagation();
   var $this = $(this);
   $this.toggleClass('selected');
   if ($this.hasClass('selected')) {
@@ -40,8 +42,9 @@ classes.on('click', '.select', function() {
     $this.text('SELECT');
   }
   cart.addClass('show');
+  // console.log($(this).data('class-name'));
 });
 // Hide Cart
 $(document).on('click', function(e) {
-  console.log($(e.target).hasClass('class-list'));
+  cart.removeClass('show');
 });
