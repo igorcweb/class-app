@@ -1,6 +1,7 @@
 //Search Filter
 var filter = $('#filter');
 $(document).on('keyup', '#filter', filterClasses);
+
 function filterClasses() {
   var filterValue = filter.val().toLowerCase();
   var lis = $('li.class-name');
@@ -31,10 +32,19 @@ className.on('click', function(e) {
 });
 
 //Select Button
+
+if (!selectedIds) {
+  var selectedIds = [];
+}
 var cart = $('.cart');
 classes.on('click', '.select', function(e) {
   e.stopPropagation();
   var $this = $(this);
+  //Geting variables from data attributes (destructuring)
+  var { classId, className, classCode, classSemester, tuition } = this.dataset;
+  //Creatign addedClass object
+  var addedClass = { classId, className, classCode, classSemester, tuition };
+
   $this.toggleClass('selected');
   if ($this.hasClass('selected')) {
     $this.text('REMOVE');
@@ -42,13 +52,43 @@ classes.on('click', '.select', function(e) {
     $this.text('SELECT');
   }
   cart.addClass('show');
-  // console.log($(this).data('class-name'));
-});
+  // Displays Class Name in Card When Selected
 
-cart.on('click', function(e) {
-  e.stopPropagation();
+  $.get('/api/classes', function(data) {
+    if ($this.hasClass('selected')) {
+      selectedIds.push(classId);
+      //removing duplicate values
+      selectedIds = Array.from(new Set(selectedIds));
+      // console.log(selectedIds);
+    } else if ($this.data('class-name') === className) {
+      //removing id from array
+      var indexToRemove = selectedIds.indexOf(classId);
+      selectedIds.splice(indexToRemove, 1);
+    }
+    var addedClasses = $('.addedClasses');
+    addedClasses.empty();
+    $.each(data, function(index, value) {
+      if (selectedIds.includes(value.id.toString())) {
+        // console.log(value.name);
+        var classTitle =
+          '<li class="mb-2 added-class">' +
+          value.name +
+          '<i class="fas fa-times"></i>' +
+          '</li>' +
+          '<hr>';
+
+        addedClasses.append(classTitle);
+        console.log(classTitle);
+      }
+    });
+  });
 });
 // Hide Cart
 $(document).on('click', function(e) {
   cart.removeClass('show');
+});
+
+// X Button to Remove Class From Cart
+cart.on('click', '.fa-times', function(e) {
+  e.stopPropagation();
 });
