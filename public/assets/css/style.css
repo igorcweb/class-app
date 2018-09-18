@@ -7,7 +7,7 @@ body {
   background-color: #fefefe;
 }
 
-ul,
+ul.classes,
 #filter {
   width: 90%;
 }
@@ -142,6 +142,39 @@ div.success {
   text-align: center;
 }
 
+/* Navbar */
+
+.navbar {
+  background-color: #6d83a5;
+}
+
+.navbar button {
+  visibility: hidden;
+}
+
+.navbar a {
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.navbar img {
+  position: absolute;
+  top: 10px;
+}
+
+.title {
+  margin-left: 150%;
+}
+
+@media only screen and (max-width: 450px) {
+  .navbar img {
+    visibility: hidden;
+  }
+  .navbar button {
+    visibility: visible;
+  }
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   ul,
@@ -152,7 +185,7 @@ div.success {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  ul,
+  ul.classes,
   #filter {
     width: 600px;
   }
@@ -160,7 +193,7 @@ div.success {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  ul,
+  ul.classes,
   #filter {
     width: 650px;
   }

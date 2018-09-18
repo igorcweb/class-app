@@ -24,6 +24,36 @@
 </head>
 
 <body>
+
+  <nav class="navbar navbar-expand-md navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <img src="/assets/img/logo.png" class="d-inline-block align-top" height="150" width="150" alt="Logo.png">
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/catalogue">Catalogue</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+
+        </ul>
+      </div>
+
+      <button type="button" class="navbar-toggle float-right" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+  </nav>
+
   {{#if error}}
   <div class="alert">{{ error }}</div>
   {{/if}}
