@@ -43,15 +43,27 @@ classes.on('click', '.select', function () {
   cart.addClass('show');
 
   // Displays Class Name in Card When Selected
-  var classTitle = "<li class='mb-2'>" + $(this).data('class-name') + "<i class='fas fa-times'></i>" + "</li>";
+  var classTitle = "<li class='mb-2'>" + $(this).data('class-name') + "<i class='fas fa-times'></i>" +  "</li>";
   var addedClasses = $(".addedClasses");
-  addedClasses.append(classTitle);
+  if ($this.hasClass('selected')) {
+    addedClasses.append(classTitle);
+  } else if ($this.data("class-name") === $(classTitle).text()) {
+    
+      $(classTitle).closest("li").remove();
+     // $(document).on(‘click’,‘.removeButton’,function() {
+      //  $(this).closest(“div.row”).remove();
+   
+      
+    }
 
-
+  
 });
 // Hide Cart
-$(document).on('click', function (e) {
-  console.log($(e.target).hasClass('class-list'));
+$(document).on('click', function (e) {});
+
+
+// X Button to Remove Class From Card
+cart.on('click', '.fa-times', function (e) {
+  e.stopPropagation();
+  $()
 });
-
-
