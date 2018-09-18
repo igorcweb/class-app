@@ -32,29 +32,75 @@ className.on('click', function(e) {
 });
 
 //Select Button
-
 if (!selectedIds) {
   var selectedIds = [];
 }
 var cart = $('.cart');
-classes.on('click', '.select', function(e) {
-  e.stopPropagation();
-  var $this = $(this);
-  //Geting variables from data attributes (destructuring)
-  var { classId, className, classCode, classSemester, tuition } = this.dataset;
-  //Creatign addedClass object
-  var addedClass = { classId, className, classCode, classSemester, tuition };
+var addedClasses = $('.addedClasses');
+$.get('/api/classes', function(data) {
+  cart.on('click', '.fa-times', function(e) {
+    var { classId } = this.dataset;
+    $.each($('.select'), function(index, btn) {
+      // Change Button Text
+      if (
+        classId ===
+        $(btn)
+          .data('class-id')
+          .toString()
+      ) {
+        console.log($(btn).data('class-id'));
+        $(btn)
+          .removeClass('selected')
+          .text('SELECT');
+      }
+    });
+    e.stopPropagation();
+    var indexToRemove = selectedIds.indexOf(
+      $(this)
+        .data('classId')
+        .toString()
+    );
+    selectedIds.splice(indexToRemove, 1);
+    addedClasses.empty();
+    $.each(data, function(index, value) {
+      if (selectedIds.includes(value.id.toString())) {
+        var classTitle =
+          '<li class="mb-2 added-class">' +
+          value.name +
+          `<i class="fas fa-times" data-class-id="${classId}"></i>` +
+          '</li>' +
+          '<hr>';
+        addedClasses.append(classTitle);
+      }
+      if (!selectedIds.length) {
+        //Hide cart if it is empty
+        cart.removeClass('show');
+      }
+    });
+  });
+  classes.on('click', '.select', function(e) {
+    e.stopPropagation();
+    var $this = $(this);
+    //Geting variables from data attributes (destructuring)
+    var {
+      classId,
+      className,
+      classCode,
+      classSemester,
+      tuition
+    } = this.dataset;
+    //Creatign addedClass object
+    var addedClass = { classId, className, classCode, classSemester, tuition };
 
-  $this.toggleClass('selected');
-  if ($this.hasClass('selected')) {
-    $this.text('REMOVE');
-  } else {
-    $this.text('SELECT');
-  }
-  cart.addClass('show');
-  // Displays Class Name in Card When Selected
+    $this.toggleClass('selected');
+    if ($this.hasClass('selected')) {
+      $this.text('REMOVE');
+    } else {
+      $this.text('SELECT');
+    }
+    cart.addClass('show');
+    // Displays Class Name in Card When Selected
 
-  $.get('/api/classes', function(data) {
     if ($this.hasClass('selected')) {
       selectedIds.push(classId);
       //removing duplicate values
@@ -65,30 +111,26 @@ classes.on('click', '.select', function(e) {
       var indexToRemove = selectedIds.indexOf(classId);
       selectedIds.splice(indexToRemove, 1);
     }
-    var addedClasses = $('.addedClasses');
     addedClasses.empty();
     $.each(data, function(index, value) {
       if (selectedIds.includes(value.id.toString())) {
-        // console.log(value.name);
         var classTitle =
           '<li class="mb-2 added-class">' +
           value.name +
-          '<i class="fas fa-times"></i>' +
+          `<i class="fas fa-times" data-class-id="${classId}"></i>` +
           '</li>' +
           '<hr>';
-
         addedClasses.append(classTitle);
-        console.log(classTitle);
       }
     });
+
+    if (!selectedIds.length) {
+      //Hide cart if it is empty
+      cart.removeClass('show');
+    }
   });
 });
-// Hide Cart
+// Hide cart
 $(document).on('click', function(e) {
   cart.removeClass('show');
-});
-
-// X Button to Remove Class From Cart
-cart.on('click', '.fa-times', function(e) {
-  e.stopPropagation();
 });
