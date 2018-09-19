@@ -36,8 +36,8 @@ li.class-name::before {
   margin-right: 6px;
 }
 
-a.proceed.btn.btn.btn-sm.btn-outline-secondary{
-  margin-left: 5%;
+button.proceed {
+  margin-left: 1.1rem;
 }
 
 ul.addedClasses {
@@ -60,14 +60,14 @@ li.added-class {
   left: 105%;
   transform: translateY(-50%);
   right: 0;
-  color: pink;
+  color: rgba(234, 41, 41, 0.6);
   float: right;
   cursor: pointer;
-  transition:.5s;
+  transition: 0.5s;
 }
 
 .fa-times:hover {
- color: #ea2929;
+  color: #ea2929;
 }
 
 li.class-name.is-open::before {
@@ -92,6 +92,7 @@ button.select {
 
 /* Cart */
 .cart {
+  background-color: #d5d5d5;
   z-index: 10;
   position: fixed;
   top: 0;
@@ -100,6 +101,7 @@ button.select {
   width: 350px;
   margin-right: -350px;
   transition: 0.3s ease-in-out;
+  overflow: scroll;
 }
 
 .cart.show {
@@ -107,7 +109,7 @@ button.select {
 }
 
 .card-title-text {
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
   padding-top: 32%;
   padding-left: 2%;
   color: white;
@@ -116,9 +118,8 @@ button.select {
 }
 
 .card-title-img {
-  background: linear-gradient(rgba(58, 55, 55, 0.1), 
-            rgba(103, 29, 29, 0.5)), 
-              url('../images/classes.jpeg') center / cover;
+  background: linear-gradient(rgba(58, 55, 55, 0.1), rgba(103, 29, 29, 0.5)),
+    url('../images/classes.jpeg') center / cover;
   height: 150px;
 }
 
