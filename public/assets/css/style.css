@@ -5,6 +5,7 @@
 
 body {
   background-color: #fefefe;
+  font-family: 'Roboto', sans-serif;
 }
 
 ul,
@@ -35,14 +36,38 @@ li.class-name::before {
   margin-right: 6px;
 }
 
-ul.addedClasses {
-  list-style: none;
-  width: 250px;
+a.proceed.btn.btn.btn-sm.btn-outline-secondary{
+  margin-left: 5%;
 }
 
-.fa-times:before {
-  padding: 10px;
-  color: #ea2929
+ul.addedClasses {
+  position: relative;
+  padding-left: 5%;
+  padding-top: 5%;
+  list-style: none;
+  width: 260px;
+}
+
+li.added-class {
+  position: relative;
+}
+
+.fa-times {
+  font-size: 1.2rem;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 105%;
+  transform: translateY(-50%);
+  right: 0;
+  color: pink;
+  float: right;
+  cursor: pointer;
+  transition:.5s;
+}
+
+.fa-times:hover {
+ color: #ea2929;
 }
 
 li.class-name.is-open::before {
@@ -68,7 +93,7 @@ button.select {
 /* Cart */
 .cart {
   z-index: 10;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   height: 100%;
@@ -79,6 +104,26 @@ button.select {
 
 .cart.show {
   margin-right: 0;
+}
+
+.card-title-text {
+  margin-bottom: .75rem;
+  padding-top: 32%;
+  padding-left: 2%;
+  color: white;
+  font-weight: 400;
+  font-size: 1.8rem;
+}
+
+.card-title-img {
+  background: linear-gradient(rgba(58, 55, 55, 0.1), 
+            rgba(103, 29, 29, 0.5)), 
+              url('../images/classes.jpeg') center / cover;
+  height: 150px;
+}
+
+.card-body {
+  padding: 0;
 }
 
 /* Validation Flash Messages */
@@ -131,7 +176,6 @@ div.success {
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-
   ul,
   #filter {
     width: 500px;
@@ -140,7 +184,6 @@ div.success {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-
   ul,
   #filter {
     width: 600px;
@@ -149,7 +192,6 @@ div.success {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-
   ul,
   #filter {
     width: 650px;
@@ -157,4 +199,5 @@ div.success {
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+}
