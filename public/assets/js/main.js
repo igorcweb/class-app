@@ -1,7 +1,7 @@
 //Search Filter
 var filter = $('#filter');
-$(document).on('keyup', '#filter', filterClasses);
 var lis = $('li.class-name');
+$(document).on('keyup', '#filter', filterClasses);
 function filterClasses() {
   var filterValue = filter.val().toLowerCase();
   $.each(lis, function(index, li) {
@@ -25,8 +25,6 @@ var className = $('li.class-name');
 var classes = $('ul.classes');
 className.on('click', function(e) {
   e.stopPropagation();
-  // Clearing out the input
-  filter.val('');
   var $this = $(this);
   $this.toggleClass('is-open');
   $this.next().toggleClass('is-open');
@@ -41,6 +39,12 @@ var addedClasses = $('.addedClasses');
 $.get('/api/classes', function(data) {
   classes.on('click', '.select', function(e) {
     e.stopPropagation();
+    // Clearing out the input
+    filter.val('');
+    // Displayin all classes
+    $.each(lis, function(index, li) {
+      $(li).addClass('d-block');
+    });
     var $this = $(this);
     //closing description
     $this.closest('li').removeClass('is-open');
