@@ -67,7 +67,6 @@ $.get('/api/classes', function(data) {
       selectedIds.push(classId);
       //removing duplicate values
       selectedIds = Array.from(new Set(selectedIds));
-      // console.log(selectedIds);
     } else if ($this.data('class-name') === className) {
       //removing id from array
       var indexToRemove = selectedIds.indexOf(classId);
@@ -98,15 +97,10 @@ $.get('/api/classes', function(data) {
 
     $.each(data, function(index, obj) {
       if (className === obj.name) {
-        console.log('before:', selectedIds);
         var indexToRemove = selectedIds.indexOf(obj.id.toString());
         selectedIds.splice(indexToRemove, 1);
-        console.log('after:', selectedIds);
       }
     });
-
-    console.log(selectedIds);
-
     addedClasses.empty();
     $.each(data, function(index, value) {
       if (selectedIds.includes(value.id.toString())) {
