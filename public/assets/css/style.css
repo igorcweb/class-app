@@ -150,11 +150,13 @@ div.success {
 
 .navbar button {
   visibility: hidden;
+  z-index: 0;
 }
 
 .navbar a {
   color: #fff;
   font-size: 1.4rem;
+  margin-left: 1.9rem;
 }
 
 .navbar img {
@@ -166,12 +168,39 @@ div.success {
   margin-left: 150%;
 }
 
+/* Lg Mobile Screen (450px) */
 @media only screen and (max-width: 450px) {
   .navbar img {
-    visibility: hidden;
+    height:100px;
+    width:100px;
+    top: 8px;
   }
-  .navbar button {
-    visibility: visible;
+  .navbar a {
+    font-size: 1.2rem;
+  }
+}
+
+/* Med Mobile screen (380px) */
+@media only screen and (max-width: 380px) {
+  .navbar img {
+    height:80px;
+    width:80px;
+    top: 7px;
+  }
+  .navbar a {
+    font-size: 1rem;
+  }
+}
+
+/* S Mobile (350px and below) */
+@media only screen and (max-width: 350px) {
+  .navbar img {
+    height:70px;
+    width:70px;
+    top: 6px;
+  }
+  .navbar a {
+    font-size: .8rem;
   }
 }
 
@@ -188,6 +217,11 @@ div.success {
   ul.classes,
   #filter {
     width: 600px;
+  }
+  .navbar img {
+    height:115px;
+    width:115px;
+    top: 8px;
   }
 }
 

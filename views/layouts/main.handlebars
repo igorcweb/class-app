@@ -25,13 +25,16 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-md navbar-fixed-top">
-    <div class="container-fluid">
+  <nav class="navbar navbar-expand-md navbar-fixed-top">  
+
       <div class="navbar-header">
         <img src="/assets/img/logo.png" class="d-inline-block align-top" height="150" width="150" alt="Logo.png">
       </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="navbar-nav ml-auto">
+
+    <div class="container-fluid">
+
+      <div class="collapse navbar-collapse d-flex flex-row-reverse" id="myNavbar">
+        <ul class="nav navbar-nav d-flex flex-row-reverse">
           <li class="nav-item">
             <a class="nav-link" href="/catalogue">Catalogue</a>
           </li>
@@ -41,17 +44,10 @@
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
-
         </ul>
       </div>
 
-      <button type="button" class="navbar-toggle float-right" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
     </div>
-
   </nav>
 
   {{#if error}}
