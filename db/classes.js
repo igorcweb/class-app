@@ -1,5 +1,52 @@
 var classes = [
   {
+    name: 'Multimedia: Theory and Practice in the Arts',
+    code: 'AEA 678',
+    semester: 'Spring 2019',
+    availableSpaces: 0,
+    description:
+      'Explores new media in the arts, both in theory and in practice, particularly as it can be used in arts leadership.'
+  },
+  {
+    name: 'Contemporary Trends in Art Education',
+    code: 'AEA 575',
+    semester: 'Spring 2019',
+    availableSpaces: 4,
+    description:
+      'The relation between theory and practice in art education is introduced and examined through analysis of topics currently affecting the field.'
+  },
+  {
+    name: 'Seminar in Art Museum',
+    code: 'AEA 594',
+    semester: 'Spring 2019',
+    availableSpaces: 4,
+    description:
+      'Study of the functions of an art museum collection, preservation, exhibitions, research and interpretation of art objects. Visits to North Texas museums required.'
+  },
+  {
+    name: 'Seminar in Medieval Art',
+    code: 'AEA 580',
+    semester: 'Spring 2019',
+    availableSpaces: 4,
+    description: 'Selected problems in Medieval art.'
+  },
+  {
+    name: 'Digital Art Studio',
+    code: 'ART 581',
+    semester: 'Spring 2019',
+    availableSpaces: 3,
+    description:
+      'Topics classes, focusing on new and experimental subject matter in the digital media environment.'
+  },
+  {
+    name: 'Contemporary Architecture',
+    code: 'ART 520',
+    semester: 'Spring 2019',
+    availableSpaces: 4,
+    description:
+      'Biological, structural and social problems of human shelter; analysis of achievement in contemporary architecture.'
+  },
+  {
     name: 'Human Evolution: Biological and Social Beginnings of Humankind',
     code: 'ANT 241',
     semester: 'Spring 2019',

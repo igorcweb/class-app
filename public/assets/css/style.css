@@ -5,6 +5,7 @@
 
 body {
   background-color: #fefefe;
+  font-family: 'Roboto', sans-serif;
 }
 
 ul.classes,
@@ -35,9 +36,14 @@ li.class-name::before {
   margin-right: 6px;
 }
 
+button.proceed {
+  margin-left: 1.1rem;
+}
+
 ul.addedClasses {
   position: relative;
-  padding-left: 0;
+  padding-left: 5%;
+  padding-top: 5%;
   list-style: none;
   width: 260px;
 }
@@ -51,11 +57,17 @@ li.added-class {
   padding: 0;
   position: absolute;
   top: 50%;
+  left: 105%;
   transform: translateY(-50%);
   right: 0;
   color: #ea2929;
   float: right;
   cursor: pointer;
+  transition: 0.5s;
+}
+
+.fa-times:hover {
+  color: rgba(234, 41, 41, 0.6);
 }
 
 li.class-name.is-open::before {
@@ -80,6 +92,7 @@ button.select {
 
 /* Cart */
 .cart {
+  background-color: #d5d5d5;
   z-index: 10;
   position: fixed;
   top: 0;
@@ -88,10 +101,30 @@ button.select {
   width: 350px;
   margin-right: -350px;
   transition: 0.3s ease-in-out;
+  overflow: scroll;
 }
 
 .cart.show {
   margin-right: 0;
+}
+
+.card-title-text {
+  margin-bottom: 0.75rem;
+  padding-top: 32%;
+  padding-left: 2%;
+  color: white;
+  font-weight: 400;
+  font-size: 1.8rem;
+}
+
+.card-title-img {
+  background: linear-gradient(rgba(58, 55, 55, 0.1), rgba(103, 29, 29, 0.5)),
+    url('../images/classes.jpeg') center / cover;
+  height: 150px;
+}
+
+.card-body {
+  padding: 0;
 }
 
 /* Validation Flash Messages */

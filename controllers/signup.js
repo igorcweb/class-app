@@ -62,8 +62,4 @@ router.post('/', function(req, res) {
   });
 });
 
-// Student.selectAll('students', function(result) {
-//   console.log(result);
-// });
-
 module.exports = router;
