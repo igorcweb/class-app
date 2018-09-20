@@ -8,6 +8,19 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+/* Login */
+
+.login {
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  padding-bottom: 20px;
+  background-color: #f8f8f8;
+}
+
+.title {
+  padding: 10px;
+}
+
 ul,
 #filter {
   width: 90%;
