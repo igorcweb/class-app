@@ -182,8 +182,7 @@ div.success {
 }
 
 .navbar button {
-  visibility: hidden;
-  z-index: 0;
+  display: none;
 }
 
 .navbar a {
@@ -206,7 +205,11 @@ div.success {
   .navbar img {
     height:100px;
     width:100px;
+    left: -7px;
     top: 8px;
+  }
+  .navbar button {
+    display: block;
   }
   .cart{
     width: 70%;
@@ -221,7 +224,11 @@ div.success {
   .navbar img {
     height:80px;
     width:80px;
+    left: -3px;
     top: 7px;
+  }
+  .navbar button {
+    display: block;
   }
   .cart{
     width: 78%;
@@ -234,9 +241,13 @@ div.success {
 /* S Mobile (350px and below) */
 @media only screen and (max-width: 350px) {
   .navbar img {
-    height:70px;
-    width:70px;
+    height:60px;
+    width:60px;
+    left: -1px;
     top: 6px;
+  }
+  .navbar button {
+    display: block;
   }
   .cart{
     width: 90%;
