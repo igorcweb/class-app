@@ -8,17 +8,25 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Login */
+/* Forms */
 
 .login {
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   padding-bottom: 20px;
-  background-color: #f8f8f8;
+  background-color: #f9f9f9;
 }
 
 .title {
-  padding: 10px;
+  color: #444;
+}
+
+.title-login::before {
+  font-family: 'FontAwesome';
+  content: '\f023';
+  margin-right: 5px;
+  margin-right: 6px;
+  font-size: 1.5rem;
 }
 
 ul,
