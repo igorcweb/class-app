@@ -175,6 +175,9 @@ div.success {
     width:100px;
     top: 8px;
   }
+  .cart{
+    width: 70%;
+  }
   .navbar a {
     font-size: 1.2rem;
   }
@@ -186,6 +189,9 @@ div.success {
     height:80px;
     width:80px;
     top: 7px;
+  }
+  .cart{
+    width: 78%;
   }
   .navbar a {
     font-size: 1rem;
@@ -199,10 +205,14 @@ div.success {
     width:70px;
     top: 6px;
   }
+  .cart{
+    width: 90%;
+  }
   .navbar a {
     font-size: .8rem;
   }
 }
+
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
