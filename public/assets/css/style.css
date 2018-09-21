@@ -86,14 +86,15 @@ li.added-class {
   top: 50%;
   transform: translateY(-50%);
   right: 0;
-  color: #ea2929;
+  color: rgba(234, 41, 41, 0.8);
+
   float: right;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .fa-times:hover {
-  color: rgba(234, 41, 41, 0.6);
+  color: #ea2929;
 }
 
 li.class-name.is-open::before {
