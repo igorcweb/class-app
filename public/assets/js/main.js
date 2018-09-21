@@ -55,7 +55,7 @@
   });
   var cart = $('.cart');
   var addedClasses = $('.addedClasses');
-  var total = 0;
+  var subtotal = 0;
   $.get('/api/classes', function(data) {
     classes.on('click', '.select', function(e) {
       e.stopPropagation();
@@ -74,15 +74,11 @@
         .prev()
         .removeClass('is-open');
       //Geting variables from data attributes (destructuring)
-      var {
-        classId,
-        className,
-        classCode,
-        classSemester,
-        tuition
-      } = this.dataset;
+      var { classId, className, tuition } = this.dataset;
       $this.addClass('selected');
       cart.addClass('show');
+      subtotal += parseFloat(tuition);
+      $('#subtotal').text(subtotal.toFixed(2));
       // Display Class Name in Card When Selected
       if ($this.hasClass('selected')) {
         selectedIds.push(classId);
@@ -139,6 +135,9 @@
 
       $.each(data, function(index, obj) {
         if (className === obj.name) {
+          var { tuition } = obj;
+          subtotal -= parseFloat(tuition);
+          $('#subtotal').text(subtotal.toFixed(2));
           var indexToRemove = selectedIds.indexOf(obj.id.toString());
           selectedIds.splice(indexToRemove, 1);
         }
