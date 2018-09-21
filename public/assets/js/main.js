@@ -1,4 +1,11 @@
 (function() {
+  function renderNumClasses() {
+    if (selectedIds.length === 1) {
+      $('#classesNum').text(`${selectedIds.length} Class`);
+    } else {
+      $('#classesNum').text(`${selectedIds.length} Classes`);
+    }
+  }
   //Search Filter
   var filter = $('#filter');
   var lis = $('li.class-name');
@@ -35,13 +42,14 @@
   if (!selectedIds) {
     var selectedIds = [];
   }
-  //Disabled select button if no available spaces
+  //Disable select button if no available spaces
   var select = $('.select');
   $.each(select, function(index, selectButton) {
     if ($(selectButton).data('available-spaces') === 0) {
       $(selectButton).attr('disabled', 'true');
       $(selectButton)
         .prev()
+        //add alert
         .removeClass('d-none');
     }
   });
@@ -54,7 +62,7 @@
       var $this = $(this);
       // Clearing out the input
       filter.val('');
-      // Displayin all classes
+      // Displaying all classes
       $.each(lis, function(index, li) {
         $(li).addClass('d-block');
       });
@@ -73,17 +81,9 @@
         classSemester,
         tuition
       } = this.dataset;
-      //Creatign addedClass object
-      var addedClass = {
-        classId,
-        className,
-        classCode,
-        classSemester,
-        tuition
-      };
       $this.addClass('selected');
       cart.addClass('show');
-      // Displays Class Name in Card When Selected
+      // Display Class Name in Card When Selected
       if ($this.hasClass('selected')) {
         selectedIds.push(classId);
         //removing duplicate values
@@ -104,16 +104,11 @@
             '</li>' +
             '<hr>';
           addedClasses.append(classTitle);
+          renderNumClasses();
         }
       });
-      //Render number of classes
-      if (selectedIds.length === 1) {
-        $('#classesNum').text(`${selectedIds.length} Class`);
-      } else {
-        $('#classesNum').text(`${selectedIds.length} Classes`);
-      }
 
-      //Prevent adding more than 6 classes
+      //Prevent adding more than 5 classes
       if (selectedIds.length === 5) {
         $.each(select, function(index, selectButton) {
           if ($(selectButton).data('available-spaces') > 0) {
@@ -122,25 +117,7 @@
           }
         });
       }
-      // if (selectedIds.length === 5) {
-      //   $.each(select, function(index, selectButton) {
-      //     $(selectButton).attr('disabled', 'false');
-      //     $('limit').addClass('d-none');
-      //   });
-      // }
-
-      // //Disabled select button if no available spaces
-      // var select = $('.select');
-      // $.each(select, function(index, selectButton) {
-      //   if ($(selectButton).data('available-spaces') === 0) {
-      //     $(selectButton).attr('disabled', 'true');
-      //     $(selectButton)
-      //       .prev()
-      //       .removeClass('d-none');
-      //   }
-      // });
-
-      //Hide cart if it is empty
+      //Hide cart if empty
       if (!selectedIds.length) {
         cart.removeClass('show');
       }
@@ -149,11 +126,13 @@
     cart.on('click', '.fa-times', function(e) {
       e.stopPropagation();
       $.each(select, function(index, selectButton) {
+        //Enabling buttons/removing alerts
         if ($(selectButton).data('available-spaces') > 0) {
           $(selectButton).attr('disabled', false);
           $('.limit').addClass('d-none');
         }
       });
+
       var className = $(this)
         .closest('li')
         .text();
@@ -174,9 +153,11 @@
             '</li>' +
             '<hr>';
           addedClasses.append(classTitle);
+          //Rendering number of classes
+          renderNumClasses();
         }
         if (!selectedIds.length) {
-          //Hide cart if it is empty
+          //Hide cart if empty
           cart.removeClass('show');
         }
       });
