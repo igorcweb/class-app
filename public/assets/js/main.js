@@ -60,6 +60,7 @@
     classes.on('click', '.select', function(e) {
       e.stopPropagation();
       var $this = $(this);
+      $this.attr('disabled', true);
       // Clearing out the input
       filter.val('');
       // Displaying all classes
@@ -75,20 +76,17 @@
         .removeClass('is-open');
       //Geting variables from data attributes (destructuring)
       var { classId, className, tuition } = this.dataset;
-      $this.addClass('selected');
-      cart.addClass('show');
       subtotal += parseFloat(tuition);
       $('#subtotal').text(subtotal.toFixed(2));
+      $this.addClass('selected');
+      cart.addClass('show');
       // Display Class Name in Card When Selected
       if ($this.hasClass('selected')) {
         selectedIds.push(classId);
         //removing duplicate values
         selectedIds = Array.from(new Set(selectedIds));
-      } else if ($this.data('class-name') === className) {
-        //removing id from array
-        var indexToRemove = selectedIds.indexOf(classId);
-        selectedIds.splice(indexToRemove, 1);
       }
+
       addedClasses.empty();
 
       $.each(data, function(index, value) {
@@ -118,7 +116,6 @@
         cart.removeClass('show');
       }
     });
-
     cart.on('click', '.fa-times', function(e) {
       e.stopPropagation();
       $.each(select, function(index, selectButton) {
