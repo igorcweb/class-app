@@ -8,6 +8,17 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+/* Navbar */
+.navbar {
+  padding: 0.8rem;
+}
+.navbar-nav li {
+  padding-right: 20px;
+}
+.nav-link {
+  font-size: 1.1em !important;
+}
+
 /* Forms */
 .login,
 .signup {
@@ -37,7 +48,7 @@ body {
   font-size: 1.5rem;
 }
 
-ul,
+ul.classes,
 #filter {
   width: 90%;
 }
@@ -113,15 +124,12 @@ li.class-content.is-open {
   display: block;
 }
 
-button.select {
-  outline: none;
-}
-
 /* Cart */
 .cart {
+  height: auto;
   z-index: 10;
   position: fixed;
-  top: 0;
+  top: 4rem;
   right: 0;
   height: 100%;
   width: 350px;
@@ -163,7 +171,7 @@ button.select {
 
 button.proceed {
   position: absolute;
-  bottom: 0;
+  bottom: 4rem;
   width: 320px;
 }
 
@@ -217,7 +225,7 @@ div.success {
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-  ul,
+  ul.classes,
   #filter {
     width: 500px;
   }
@@ -225,7 +233,7 @@ div.success {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  ul,
+  ul.classes,
   #filter {
     width: 600px;
   }
@@ -233,7 +241,7 @@ div.success {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  ul,
+  ul.classes,
   #filter {
     width: 650px;
   }
