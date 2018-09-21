@@ -1,4 +1,4 @@
-(function($) {
+(function() {
   //Search Filter
   var filter = $('#filter');
   var lis = $('li.class-name');
@@ -47,7 +47,7 @@
   });
   var cart = $('.cart');
   var addedClasses = $('.addedClasses');
-
+  var total = 0;
   $.get('/api/classes', function(data) {
     classes.on('click', '.select', function(e) {
       e.stopPropagation();
@@ -81,7 +81,6 @@
         classSemester,
         tuition
       };
-
       $this.addClass('selected');
       cart.addClass('show');
       // Displays Class Name in Card When Selected
@@ -95,6 +94,7 @@
         selectedIds.splice(indexToRemove, 1);
       }
       addedClasses.empty();
+
       $.each(data, function(index, value) {
         if (selectedIds.includes(value.id.toString())) {
           var classTitle =
@@ -106,13 +106,54 @@
           addedClasses.append(classTitle);
         }
       });
+      //Render number of classes
+      if (selectedIds.length === 1) {
+        $('#classesNum').text(`${selectedIds.length} Class`);
+      } else {
+        $('#classesNum').text(`${selectedIds.length} Classes`);
+      }
+
+      //Prevent adding more than 6 classes
+      if (selectedIds.length === 5) {
+        $.each(select, function(index, selectButton) {
+          if ($(selectButton).data('available-spaces') > 0) {
+            $(selectButton).attr('disabled', 'true');
+            $('.limit').removeClass('d-none');
+          }
+        });
+      }
+      // if (selectedIds.length === 5) {
+      //   $.each(select, function(index, selectButton) {
+      //     $(selectButton).attr('disabled', 'false');
+      //     $('limit').addClass('d-none');
+      //   });
+      // }
+
+      // //Disabled select button if no available spaces
+      // var select = $('.select');
+      // $.each(select, function(index, selectButton) {
+      //   if ($(selectButton).data('available-spaces') === 0) {
+      //     $(selectButton).attr('disabled', 'true');
+      //     $(selectButton)
+      //       .prev()
+      //       .removeClass('d-none');
+      //   }
+      // });
+
       //Hide cart if it is empty
       if (!selectedIds.length) {
         cart.removeClass('show');
       }
     });
+
     cart.on('click', '.fa-times', function(e) {
       e.stopPropagation();
+      $.each(select, function(index, selectButton) {
+        if ($(selectButton).data('available-spaces') > 0) {
+          $(selectButton).attr('disabled', false);
+          $('.limit').addClass('d-none');
+        }
+      });
       var className = $(this)
         .closest('li')
         .text();
@@ -145,4 +186,4 @@
       cart.removeClass('show');
     });
   });
-})(jQuery);
+})();
