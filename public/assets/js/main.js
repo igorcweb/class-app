@@ -7,6 +7,14 @@
     }
     $('#navNum').text(selectedIds.length);
   }
+
+  // //Navbar button
+  $('.navbar-toggler-icon').on('click', function(e) {
+    console.log($('.collapse'));
+    $('#logo').toggleClass('logo-center');
+    console.log('open');
+  });
+
   //Search Filter
   var filter = $('#filter');
   var lis = $('li.class-name');
@@ -117,12 +125,12 @@
         cart.removeClass('show');
       }
     });
+
     cart.on('click', '.fa-times', function(e) {
       e.stopPropagation();
       var className = $(this)
         .closest('li')
         .text();
-
       $.each(data, function(index, obj) {
         if (className === obj.name) {
           var { tuition } = obj;
@@ -166,9 +174,20 @@
         }
       });
     });
-    // Hide cart on outside click
+
+    //Hide cart on outside click (except for hamburger menu button)
     $(document).on('click', function(e) {
-      cart.removeClass('show');
+      if (!$(e.target).hasClass('navbar-toggler-icon')) {
+        cart.removeClass('show');
+      }
+    });
+
+    //Cart Link
+    $('#cartLink').on('click', function(e) {
+      e.stopPropagation();
+      cart.addClass('show');
+      $('.collapse').removeClass('show');
+      $('#logo').toggleClass('logo-center');
     });
   });
 })();

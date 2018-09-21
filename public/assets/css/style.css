@@ -9,14 +9,32 @@ body {
 }
 
 /* Navbar */
-/* .navbar {
-  padding: 0.8rem;
-} */
+#logo {
+  position: absolute;
+  top: 10px;
+
+  width: 80px;
+}
+
+.logo-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bg-blue {
+  background-color: #6d83a5;
+}
 .navbar-nav li {
   padding-right: 20px;
 }
 .nav-link {
-  font-size: 1.1em !important;
+  font-size: 1.2em !important;
+  color: #f3f3f3 !important;
+}
+
+.nav-link:hover,
+.nav-link:active {
+  color: #fff !important;
 }
 
 .navbar-toggler-icon {
@@ -90,7 +108,7 @@ ul.addedClasses {
   margin-left: 0 !important;
   padding-top: 5%;
   list-style: none;
-  width: 320px;
+  width: 270px;
 }
 
 li.added-class {
@@ -137,10 +155,10 @@ li.class-content.is-open {
   height: auto;
   z-index: 10;
   position: fixed;
-  top: 4rem;
+  top: 3.4rem;
   right: 0;
   height: 100%;
-  width: 350px;
+  width: 300px;
   margin-right: -350px;
   transition: 0.3s ease-in-out;
   overflow: scroll;
@@ -179,8 +197,8 @@ li.class-content.is-open {
 
 button.proceed {
   position: absolute;
-  bottom: 4rem;
-  width: 320px;
+  bottom: 3.4rem;
+  width: 270px;
 }
 
 /* Validation Flash Messages */
@@ -233,14 +251,42 @@ div.success {
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+  .cart {
+    top: 3.4rem;
+    width: 350px;
+  }
+  ul.addedClasses {
+    width: 320px;
+  }
+  button.proceed {
+    width: 320px;
+    bottom: 3.4rem;
+  }
   ul.classes,
   #filter {
     width: 500px;
+  }
+  #logo {
+    width: 110px;
   }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  #logo {
+    top: 10px;
+    width: 130px;
+  }
+  .cart {
+    top: 3.65rem;
+  }
+  button.proceed {
+    bottom: 3.65rem;
+  }
+  .logo-center {
+    left: 0;
+    transform: none;
+  }
   ul.classes,
   #filter {
     width: 600px;
