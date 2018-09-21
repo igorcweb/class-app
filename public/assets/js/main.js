@@ -5,6 +5,7 @@
     } else {
       $('#classesNum').text(`${selectedIds.length} Classes`);
     }
+    $('#navNum').text(selectedIds.length);
   }
   //Search Filter
   var filter = $('#filter');
@@ -159,6 +160,7 @@
           renderNumClasses();
         }
         if (!selectedIds.length) {
+          renderNumClasses();
           //Hide cart if empty
           cart.removeClass('show');
         }
