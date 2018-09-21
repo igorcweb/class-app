@@ -16,11 +16,6 @@ body {
   width: 80px;
 }
 
-.logo-center {
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 .bg-blue {
   background-color: #6d83a5;
 }
@@ -283,10 +278,7 @@ div.success {
   button.proceed {
     bottom: 3.65rem;
   }
-  .logo-center {
-    left: 0;
-    transform: none;
-  }
+
   ul.classes,
   #filter {
     width: 600px;
@@ -303,4 +295,12 @@ div.success {
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+}
+
+/* Added this media query to log from jumping due to cascading */
+@media (max-width: 767px) {
+  .logo-center {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

@@ -185,7 +185,7 @@
     //Cart Link
     $('#cartLink').on('click', function(e) {
       e.stopPropagation();
-      cart.addClass('show');
+      cart.toggleClass('show');
       $('.collapse').removeClass('show');
       $('#logo').toggleClass('logo-center');
     });
