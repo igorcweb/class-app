@@ -118,14 +118,6 @@
     });
     cart.on('click', '.fa-times', function(e) {
       e.stopPropagation();
-      $.each(select, function(index, selectButton) {
-        //Enabling buttons/removing alerts
-        if ($(selectButton).data('available-spaces') > 0) {
-          $(selectButton).attr('disabled', false);
-          $('.limit').addClass('d-none');
-        }
-      });
-
       var className = $(this)
         .closest('li')
         .text();
@@ -137,6 +129,20 @@
           $('#subtotal').text(subtotal.toFixed(2));
           var indexToRemove = selectedIds.indexOf(obj.id.toString());
           selectedIds.splice(indexToRemove, 1);
+        }
+      });
+      $.each(select, function(index, selectButton) {
+        //Enabling buttons/removing alerts
+        if (
+          $(selectButton).data('available-spaces') > 0 &&
+          !selectedIds.includes(
+            $(selectButton)
+              .data('classId')
+              .toString()
+          )
+        ) {
+          $(selectButton).attr('disabled', false);
+          $('.limit').addClass('d-none');
         }
       });
       addedClasses.empty();
