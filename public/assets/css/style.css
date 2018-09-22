@@ -156,6 +156,23 @@ li.class-content.is-open {
   display: block;
 }
 
+/* Header Img */
+
+.header-img {
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.4;
+
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='svgMask'><feGaussianBlur stdDeviation='10' /></filter></svg>#svgMask");
+}
+
 /* Cart */
 .cart {
   height: auto;
@@ -228,6 +245,8 @@ button.proceed {
 }
 .cat-bg {
   background-image: radial-gradient(#6e84a4, #354864);
+  position:sticky;
+  top:0;
 }
 
 .card.cat-input {
