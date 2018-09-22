@@ -63,6 +63,13 @@ body {
   background-color: #f9f9f9;
 }
 
+.search-bar{
+  margin: 4%;
+  top: 0;
+  padding-bottom: 20px;
+  background-color: transparent;
+}
+
 .title {
   color: #444;
 }
@@ -163,11 +170,15 @@ li.class-content.is-open {
 /* Header Img */
 
 .header-img {
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute; 
+  left: 0%;
+  top: 0%;
+  right: 0%;
+  bottom: auto;
   opacity: 0.4;
+  margin: auto; 
+  min-width: 100%;
+  min-height: 100%;
 
   filter: blur(10px);
   -webkit-filter: blur(10px);
@@ -229,7 +240,6 @@ button.proceed {
   left: 23px;
 }
 
-<<<<<<< HEAD
 /* Catalogue Stylings */
 .carousel {
   top: -72px;
@@ -248,10 +258,13 @@ button.proceed {
 .subcat-size {
   font-size: 25px;
 }
+
 .cat-bg {
   background-image: radial-gradient(#6e84a4, #354864);
-  position:sticky;
-  top:0;
+  position: fixed;
+  top: 0;
+  width: 100%; 
+  height: 100%;
 }
 
 .card.cat-input {
@@ -261,6 +274,7 @@ padding: 0;
 #classes {
   margin-bottom: 0;
   margin-top: -10%;
+  background-color: var(--main-blue);
 }
 
 /* Footer */
@@ -269,7 +283,6 @@ padding: 0;
   background-color:red;
   height: 20%;
 }
-=======
 .link {
   color: var(--main-blue);
 }
@@ -278,7 +291,6 @@ padding: 0;
   text-decoration: none;
 }
 
->>>>>>> master
 /* Validation Flash Messages */
 ul.success li {
   list-style: none;
@@ -433,7 +445,6 @@ div.success {
     left: 50%;
     transform: translateX(-50%);
   }
-<<<<<<< HEAD
 
   #classes {
     margin-bottom: 0;
@@ -443,11 +454,11 @@ div.success {
   .carousel-caption {
     bottom: -5%;
     left: -25%;
-=======
+  }
   .login,
-  .register {
+  .register,
+  .search-bar {
     max-width: 90%;
->>>>>>> master
   }
 }
 
