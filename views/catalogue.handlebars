@@ -1,7 +1,20 @@
-<h2 class="text-center my-4">Course Catalogue</h2>
+<div class="cat-bg">
+<div class="carousel position shadow" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100 shadow" src="/assets/images/catalogue.jpg">
+      <div class="carousel-caption">
+    <h1 class="cat-size">Course Catalogue</h1>
+    <p class="subcat-size">Find the classes you need. Get to studying.</p>
+  </div>
+    </div>
+  
+  </div>
+</div>
+
 {{> catalogue/cart-block}}
 <div id="classes">
-  <input class="d-block mx-auto mb-4 pb-2" type="text" id="filter" placeholder="Search Classes">
+  <input class="d-block mx-auto mb-2 pb-.5 rounded" type="text" id="filter" placeholder="Search Classes">
   <ul class="classes list-group mx-auto mb-5">
     {{#if isAuthenticated}}
     {{#each classes}}
