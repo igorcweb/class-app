@@ -53,6 +53,10 @@ body {
 /* Forms */
 .login,
 .register {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   padding-bottom: 20px;
@@ -225,6 +229,7 @@ button.proceed {
   left: 23px;
 }
 
+<<<<<<< HEAD
 /* Catalogue Stylings */
 .carousel {
   top: -72px;
@@ -264,6 +269,16 @@ padding: 0;
   background-color:red;
   height: 20%;
 }
+=======
+.link {
+  color: var(--main-blue);
+}
+.link:hover {
+  color: var(--main-blue-hover);
+  text-decoration: none;
+}
+
+>>>>>>> master
 /* Validation Flash Messages */
 ul.success li {
   list-style: none;
@@ -418,6 +433,7 @@ div.success {
     left: 50%;
     transform: translateX(-50%);
   }
+<<<<<<< HEAD
 
   #classes {
     margin-bottom: 0;
@@ -427,6 +443,11 @@ div.success {
   .carousel-caption {
     bottom: -5%;
     left: -25%;
+=======
+  .login,
+  .register {
+    max-width: 90%;
+>>>>>>> master
   }
 }
 

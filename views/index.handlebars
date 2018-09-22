@@ -1,4 +1,7 @@
-<h2 class="text-center">Welcome {{studentName}}!</h2>
-
-<h3 class="text-center">Here are your classes:</h3>
+<h2 class="text-center">Welcome {{first_name}} {{last_name}}!</h2>
 {{> catalogue/cart-block}}
+{{#if registeredIds}}
+<h4 class="text-center">Here are your classes:</h4>
+{{else}}
+<h4 class="text-center mt-4">You haven't registered for any classes yet</h4>
+<h4 class="text-center">Click <a class="link" href="/catalogue">here </a> to see Course Catalogue</h4> {{/if}}
