@@ -103,8 +103,8 @@ ul.addedClasses {
   margin-left: 0 !important;
   padding-top: 5%;
   list-style: none;
-  left: 10px;
-  width: 250px;
+  left: 8px;
+  width: 254px;
 }
 
 li.added-class {
@@ -194,8 +194,8 @@ li.class-content.is-open {
 button.proceed {
   position: absolute;
   bottom: 3.4rem;
-  width: 250px;
-  left: 25px;
+  width: 254px;
+  left: 23px;
 }
 
 /* Validation Flash Messages */

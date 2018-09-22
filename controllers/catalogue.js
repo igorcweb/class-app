@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var Class = require('../models/class');
+var selectAuthenticated = require('../helpers/authMiddleware')
+  .selectAuthenticated;
 
 //Only run this code to reseed classes data after running the schema file first.
 
@@ -20,7 +22,6 @@ var Class = require('../models/class');
 router.get('/', function(req, res) {
   Class.selectAll('classes', function(results) {
     res.render('catalogue', {
-      urlPath: req.baseUrl,
       classes: results
     });
   });

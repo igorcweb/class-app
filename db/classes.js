@@ -47,14 +47,6 @@ var classes = [
       'Biological, structural and social problems of human shelter; analysis of achievement in contemporary architecture.'
   },
   {
-    name: 'Human Evolution: Biological and Social Beginnings of Humankind',
-    code: 'ANT 241',
-    semester: 'Spring 2019',
-    availableSpaces: 8,
-    description:
-      'Topics include mutation, natural selection, primate origins, and the human fossil record. Also, ethical and moral issues of cloning, eugenics, and creationism.'
-  },
-  {
     name: 'Forensic Biology',
     code: 'BIO 506',
     semester: 'Spring 2019',
