@@ -215,7 +215,7 @@ button.proceed {
 
 .carousel-caption {
   bottom: -3%;
-  left: -33%;
+  left: -25%;
   text-shadow: black 0.1rem 0.1rem 0.1rem;
 }
 
@@ -390,7 +390,6 @@ div.success {
   .carousel-caption {
     bottom: 8%;
     left: -33%;
-    text-shadow: black 0.1rem 0.1rem 0.1rem;
   }
 }
 
@@ -404,6 +403,11 @@ div.success {
   #classes {
     margin-bottom: 0;
     margin-top: -8%;
+  }
+
+  .carousel-caption {
+    bottom: -5%;
+    left: -25%;
   }
 }
 
@@ -419,9 +423,8 @@ div.success {
   }
 
   .carousel-caption {
-    top: 25%;
+    top: 40%;
     left: -20%;
-    text-shadow: black 0.1rem 0.1rem 0.1rem;
   }
 
   #classes {
@@ -442,7 +445,6 @@ div.success {
   .carousel-caption {
     top: 25%;
     left: -20%;
-    text-shadow: black 0.1rem 0.1rem 0.1rem;
   }
 
   #classes {
