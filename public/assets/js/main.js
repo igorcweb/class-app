@@ -187,7 +187,7 @@
       e.stopPropagation();
       cart.toggleClass('show');
       $('.collapse').removeClass('show');
-      $('#logo').toggleClass('logo-center');
+      $('#logo').removeClass('logo-center');
     });
   });
 })();

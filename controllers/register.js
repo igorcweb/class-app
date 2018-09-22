@@ -8,7 +8,7 @@ var Student = require('../models/student');
 var schema = require('../controllers/joiSchema');
 
 router.get('/', ensureLoggedOut, function(req, res) {
-  res.render('signup', {
+  res.render('register', {
     urlPath: req.baseUrl
   });
 });

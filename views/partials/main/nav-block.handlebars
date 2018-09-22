@@ -6,21 +6,31 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
+
+        {{#if isAuthenticated}}
         <li class="nav-item">
           <a class="nav-link" id="cartLink">Cart <span id="navNum">0</span></a>
-        </li>
-        <li class="nav-item">
-          <a href="/" class="nav-link" id="cartLink">My Classes</a>
         </li>
         <li class=" nav-item">
           <a href="/catalogue" class="nav-link">Catalogue</a>
         </li>
         <li class="nav-item">
-          <a href="/signup" class="nav-link">Signup</a>
+          <a href="/" class="nav-link" id="cartLink">My Classes</a>
+        </li>
+        <li class="nav-item active">
+          <a href="/logout" class="nav-link">Logout</a>
+        </li>
+        {{else}}
+        <li class=" nav-item">
+          <a href="/catalogue" class="nav-link">Catalogue</a>
+        </li>
+        <li class="nav-item">
+          <a href="/register" class="nav-link">Register</a>
         </li>
         <li class="nav-item active">
           <a href="/login" class="nav-link">Login</a>
         </li>
+        {{/if}}
       </ul>
     </div>
   </div>

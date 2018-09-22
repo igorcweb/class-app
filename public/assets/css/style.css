@@ -42,7 +42,7 @@ body {
 
 /* Forms */
 .login,
-.signup {
+.register {
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   padding-bottom: 20px;
@@ -60,7 +60,7 @@ body {
   font-size: 1.5rem;
 }
 
-.title-signup::before {
+.title-register::before {
   position: relative;
   bottom: 1px;
   font-family: 'FontAwesome';
@@ -103,7 +103,8 @@ ul.addedClasses {
   margin-left: 0 !important;
   padding-top: 5%;
   list-style: none;
-  width: 270px;
+  left: 10px;
+  width: 250px;
 }
 
 li.added-class {
@@ -165,8 +166,8 @@ li.class-content.is-open {
 
 .card-title {
   position: absolute;
-  bottom: 0;
-  left: 15px;
+  bottom: 5px;
+  left: 20px;
 }
 
 .card-title-text,
@@ -193,7 +194,8 @@ li.class-content.is-open {
 button.proceed {
   position: absolute;
   bottom: 3.4rem;
-  width: 270px;
+  width: 250px;
+  left: 25px;
 }
 
 /* Validation Flash Messages */
@@ -251,10 +253,12 @@ div.success {
     width: 350px;
   }
   ul.addedClasses {
-    width: 320px;
+    left: 10px;
+    width: 300px;
   }
   button.proceed {
-    width: 320px;
+    left: 25px;
+    width: 300px;
     bottom: 3.4rem;
   }
   ul.classes,
