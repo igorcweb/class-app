@@ -386,6 +386,12 @@ div.success {
     margin-bottom: 0;
     margin-top: -3%;
   }
+
+  .carousel-caption {
+    bottom: 8%;
+    left: -33%;
+    text-shadow: black 0.1rem 0.1rem 0.1rem;
+  }
 }
 
 /* Added this media query to log from jumping due to cascading */
