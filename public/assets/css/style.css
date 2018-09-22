@@ -183,8 +183,8 @@ li.class-content.is-open {
 .card-title-img {
   position: relative;
   background: linear-gradient(rgba(58, 55, 55, 0.1), rgba(103, 29, 29, 0.5)),
-    url('../images/classes.jpeg') center / cover;
-  height: 150px;
+    url('../images/cart.jpg') center / cover;
+  height: 200px;
 }
 
 .card-body {
@@ -196,6 +196,32 @@ button.proceed {
   bottom: 3.4rem;
   width: 250px;
   left: 25px;
+}
+
+/* Catalogue Stylings */
+.carousel {
+  top: -72px;
+}
+
+.carousel-caption {
+  bottom: -3%;
+  left: -33%;
+  text-shadow: black 0.1rem 0.1rem 0.1rem;
+}
+
+.cat-size {
+  font-size: 50px;
+}
+
+.subcat-size {
+  font-size: 25px;
+}
+.cat-bg {
+  background-image: linear-gradient(to left top,#141E30, #243B55);
+}
+
+.card.cat-input {
+padding: 0;
 }
 
 /* Validation Flash Messages */
@@ -268,6 +294,13 @@ div.success {
   #logo {
     width: 110px;
   }
+  .cat-size {
+    font-size: 1.9rem;
+  }
+  .subcat-size {
+    font-size: .9rem;
+  }
+
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -287,6 +320,12 @@ div.success {
   #filter {
     width: 600px;
   }
+  .cat-size {
+    font-size: 2.5rem;
+  }
+  .subcat-size {
+    font-size: 1.5rem;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -295,10 +334,22 @@ div.success {
   #filter {
     width: 650px;
   }
+  .cat-size {
+    font-size: 2.7rem;
+  }
+  .subcat-size {
+    font-size: 1.5rem;
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+  .cat-size {
+    font-size: 3rem;
+  }
+  .subcat-size {
+    font-size: 2rem;
+  }
 }
 
 /* Added this media query to log from jumping due to cascading */
@@ -308,3 +359,22 @@ div.success {
     transform: translateX(-50%);
   }
 }
+
+
+/* Added just in case for top images */
+@media (max-width: 576px) {
+  .cat-size {
+    font-size: 1.4rem;
+  }
+  
+  .subcat-size {
+    font-size: 1rem;
+  }
+
+  .carousel-caption {
+    top: 15%;
+    left: -20%;
+    text-shadow: black 0.1rem 0.1rem 0.1rem;
+  }
+}
+

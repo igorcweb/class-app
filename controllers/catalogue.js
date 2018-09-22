@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Class = require('../models/class');
 
-//Only run this code to reseed classes data after running the schema file first.
+// Only run this code to reseed classes data after running the schema file first.
 
 // var classes = require('../db/classes');
 // classes.forEach(function(classObj) {
