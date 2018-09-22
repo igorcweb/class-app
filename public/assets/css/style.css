@@ -3,6 +3,11 @@
   src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf');
 }
 
+:root {
+  --main-blue: #6d83a5;
+  --main-blue-hover: #61799d;
+}
+
 body {
   background-color: #fefefe;
   font-family: 'Roboto', sans-serif;
@@ -17,8 +22,13 @@ body {
 }
 
 .bg-blue {
-  background-color: #6d83a5;
+  background-color: var(--main-blue);
 }
+
+.btn.bg-blue:hover {
+  background-color: var(--main-blue-hover);
+}
+
 .navbar-nav li {
   padding-right: 20px;
 }
@@ -103,8 +113,8 @@ ul.addedClasses {
   margin-left: 0 !important;
   padding-top: 5%;
   list-style: none;
-  left: 10px;
-  width: 250px;
+  left: 8px;
+  width: 254px;
 }
 
 li.added-class {
@@ -183,7 +193,7 @@ li.class-content.is-open {
 .card-title-img {
   position: relative;
   background: linear-gradient(rgba(58, 55, 55, 0.1), rgba(103, 29, 29, 0.5)),
-    url('../images/cart.jpg') center / cover;
+    url('../images/classes.jpeg') center / cover;
   height: 200px;
 }
 
@@ -194,8 +204,8 @@ li.class-content.is-open {
 button.proceed {
   position: absolute;
   bottom: 3.4rem;
-  width: 250px;
-  left: 25px;
+  width: 254px;
+  left: 23px;
 }
 
 /* Catalogue Stylings */
@@ -217,13 +227,24 @@ button.proceed {
   font-size: 25px;
 }
 .cat-bg {
-  background-image: linear-gradient(to left top,#141E30, #243B55);
+  background-image: radial-gradient(#6e84a4, #354864);
 }
 
 .card.cat-input {
 padding: 0;
 }
 
+#classes {
+  margin-bottom: 0;
+  margin-top: -10%;
+}
+
+/* Footer */
+
+.test {
+  background-color:red;
+  height: 20%;
+}
 /* Validation Flash Messages */
 ul.success li {
   list-style: none;
@@ -300,7 +321,10 @@ div.success {
   .subcat-size {
     font-size: .9rem;
   }
-
+  #classes {
+    margin-bottom: 0;
+    margin-top: -6%;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -326,6 +350,10 @@ div.success {
   .subcat-size {
     font-size: 1.5rem;
   }
+  #classes {
+    margin-bottom: 0;
+    margin-top: -5%;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -340,6 +368,10 @@ div.success {
   .subcat-size {
     font-size: 1.5rem;
   }
+  #classes {
+    margin-bottom: 0;
+    margin-top: -4%;
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -350,6 +382,10 @@ div.success {
   .subcat-size {
     font-size: 2rem;
   }
+  #classes {
+    margin-bottom: 0;
+    margin-top: -6%;
+  }
 }
 
 /* Added this media query to log from jumping due to cascading */
@@ -357,6 +393,11 @@ div.success {
   .logo-center {
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  #classes {
+    margin-bottom: 0;
+    margin-top: -8%;
   }
 }
 
@@ -368,13 +409,38 @@ div.success {
   }
   
   .subcat-size {
-    font-size: 1rem;
+    visibility: hidden;
   }
 
   .carousel-caption {
-    top: 15%;
+    top: 25%;
     left: -20%;
     text-shadow: black 0.1rem 0.1rem 0.1rem;
   }
+
+  #classes {
+    margin-bottom: 0;
+    margin-top: -10%;
+  }
 }
 
+@media (max-width: 360px) {
+  .cat-size {
+    font-size: 1.4rem;
+  }
+  
+  .subcat-size {
+    visibility: hidden;
+  }
+
+  .carousel-caption {
+    top: 25%;
+    left: -20%;
+    text-shadow: black 0.1rem 0.1rem 0.1rem;
+  }
+
+  #classes {
+    margin-bottom: 0;
+    margin-top: -15%;
+  }
+}

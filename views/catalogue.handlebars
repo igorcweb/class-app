@@ -14,13 +14,16 @@
 
 {{> catalogue/cart-block}}
 <div id="classes">
-
-    <input class="d-block mx-auto mb-4 pb-2 rounded" type="text" id="filter" placeholder="Search Classes">
-
+  <input class="d-block mx-auto mb-2 pb-.5 rounded" type="text" id="filter" placeholder="Search Classes">
   <ul class="classes list-group mx-auto mb-5">
+    {{#if isAuthenticated}}
     {{#each classes}}
     {{> catalogue/class-block}}
     {{/each}}
+    {{else}}
+    {{#each classes}}
+    {{> catalogue/class-block-loggedout}}
+    {{/each}}
+    {{/if}}
   </ul>
-
 </div>

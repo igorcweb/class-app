@@ -16,7 +16,6 @@ var register = require('./controllers/register');
 var login = require('./controllers/login');
 var logout = require('./controllers/logout');
 var classes = require('./controllers/api/classes');
-var semesters = require('./controllers/api/semesters');
 var students = require('./controllers/api/students');
 var catalogue = require('./controllers/catalogue');
 
@@ -48,8 +47,8 @@ app.use(cookieParser());
 app.use(
   session({
     secret: SESSION_SECRET,
-    saveUninitialized: false,
-    resave: false
+    saveUninitialized: true,
+    resave: true
   })
 );
 app.use(passport.initialize());
@@ -71,7 +70,6 @@ app.use('/register', register);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/api/classes', classes);
-app.use('/api/semesters', semesters);
 app.use('/api/students', students);
 app.use('/catalogue', catalogue);
 

@@ -29,7 +29,7 @@ router.post('/', function(req, res) {
             'error',
             'There is already an account associated with this email'
           );
-          return res.render('signup', {
+          return res.render('register', {
             error: req.flash('error')
           });
         } else {
@@ -57,7 +57,7 @@ router.post('/', function(req, res) {
       });
     } else {
       req.flash('error', err.message);
-      res.render('signup', { error: err.message });
+      res.render('register', { error: err.message });
     }
   });
 });
