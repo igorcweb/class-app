@@ -86,7 +86,11 @@
       //Geting variables from data attributes (destructuring)
       var { classId, className, tuition } = this.dataset;
       subtotal += parseFloat(tuition);
-      $('#subtotal').text(subtotal.toFixed(2));
+      var fees = (subtotal / 100) * 6;
+      var total = subtotal + fees;
+      $('.subtotal').text(subtotal.toFixed(2));
+      $('#fees').text(fees.toFixed(2));
+      $('#total').text(total.toFixed(2));
       $this.addClass('selected');
       cart.addClass('show');
       // Display Class Name in Card When Selected
@@ -189,5 +193,11 @@
       $('.collapse').removeClass('show');
       $('#logo').removeClass('logo-center');
     });
+  });
+
+  $('.proceed').on('click', function() {
+    console.log('clicked');
+    $('.regModal').removeClass('d-none');
+    $('.navbar').removeClass('sticky-top');
   });
 })();

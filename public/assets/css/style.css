@@ -6,6 +6,8 @@
 :root {
   --main-blue: #6d83a5;
   --main-blue-hover: #617696;
+  --main-red: rgba(234, 41, 41, 0.85);
+  --main-red-hover: #ea2929;
 }
 
 body {
@@ -133,7 +135,7 @@ li.added-class {
   top: 50%;
   transform: translateY(-50%);
   right: 0;
-  color: rgba(234, 41, 41, 0.8);
+  color: var(--main-red);
 
   float: right;
   cursor: pointer;
@@ -141,7 +143,7 @@ li.added-class {
 }
 
 .fa-times:hover {
-  color: #ea2929;
+  color: var(--main-red-hover);
 }
 
 li.class-name.is-open::before {
@@ -218,6 +220,31 @@ button.proceed {
 .link:hover {
   color: var(--main-blue-hover);
   text-decoration: none;
+}
+
+/* Register Modal */
+.regModal {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.regModal li.added-class .fa-times {
+  display: none;
+}
+.regModal ul.addedClasses hr {
+  display: none;
+}
+
+.btn.bg-red {
+  background-color: var(--main-red);
+}
+
+.btn.bg-red:hover {
+  background-color: var(--main-red-hover);
 }
 
 /* Validation Flash Messages */
