@@ -1,9 +1,9 @@
 <h2 class="text-center">Welcome {{first_name}} {{last_name}}!</h2>
+{{> index/drop-modal-block}}
 {{> catalogue/cart-block}}
 {{#if registeredIds}}
 <h4 class="text-center reg-classes mb-4" data-studentid="{{id}}">Here are your classes:</h4>
 <ul class="classes regClasses list-group mx-auto mb-4">
-
 </ul>
 {{else}}
 <h4 class="text-center mt-4">You haven't registered for any classes yet</h4>

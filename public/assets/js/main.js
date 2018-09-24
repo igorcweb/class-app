@@ -246,10 +246,18 @@
   $('#cancel').on('click', function(e) {
     e.preventDefault();
     $('.regModal').addClass('d-none');
+    $('.navbar').addClass('sticky-top');
+  });
+
+  $('#dropCancel').on('click', function(e) {
+    e.preventDefault();
+    $('.dropModal').addClass('d-none');
+    $('.navbar').addClass('sticky-top');
   });
 
   $('#reg').on('click', function(e) {
     e.preventDefault();
+    $('.navbar').addClass('sticky-top');
     var id = $(this).data('id');
     //Converting to string for database
     var registeredIds = { registeredIds: selectedIds.join(',') };
@@ -263,7 +271,8 @@
   });
   //Display Registered Classes
   if ($('.reg-classes').data('studentid')) {
-    var id = $('.reg-classes').data('studentid');
+    var regClasses = $('.reg-classes');
+    var id = $(regClasses).data('studentid');
     $.get('/api/students').then(function(studentsData) {
       $.each(studentsData, function(index, student) {
         if (student.id === id) {
@@ -275,12 +284,27 @@
                 var { id, name, code, semester } = $class;
                 var regClass = `
                 <li class="list-group-item list-group-item-action">
-                  ${code}, ${name}, ${semester}
+                  ${code}, ${name}, ${semester} <button class="dropBtn btn btn-sm bg-red text-white" data-classid="${id}" data-code="${code}" data-name="${name}" data-semester="${semester}">DROP</button>
                 </li>
                 `;
                 $('.regClasses').append(regClass);
               }
             });
+          });
+          $('.regClasses').on('click', '.dropBtn', function() {
+            var name = $(this).data('name');
+            var id = $(this).data('classid');
+            $('.dropModal')
+              .removeClass('d-none')
+              .find('#dropSubmit')
+              .attr('classid', id);
+
+            console.log($('.dropModal').find('#dropSubmit'));
+            // .attr({ 'data-className': name, 'data-classId': id });
+            $('#classToDrop')
+              .empty()
+              .append(`${name}?`);
+            $('.navbar').removeClass('sticky-top');
           });
         }
       });
