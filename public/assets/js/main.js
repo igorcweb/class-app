@@ -261,4 +261,29 @@
       location.replace('/');
     });
   });
+  //Display Registered Classes
+  if ($('.reg-classes').data('studentid')) {
+    var id = $('.reg-classes').data('studentid');
+    $.get('/api/students').then(function(studentsData) {
+      $.each(studentsData, function(index, student) {
+        if (student.id === id) {
+          var registeredIds = student.registeredIds.split(',');
+          $.get('/api/classes').then(function(classesData) {
+            $.each(classesData, function(index, $class) {
+              if (registeredIds.includes($class.id.toString())) {
+                console.log($class);
+                var { id, name, code, semester } = $class;
+                var regClass = `
+                <li class="list-group-item list-group-item-action">
+                  ${code}, ${name}, ${semester}
+                </li>
+                `;
+                $('.regClasses').append(regClass);
+              }
+            });
+          });
+        }
+      });
+    });
+  }
 })();
