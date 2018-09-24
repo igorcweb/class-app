@@ -66,7 +66,31 @@ body {
   background-color: #f9f9f9;
 }
 
-.register .title {
+.register .title,
+.search-bar {
+  margin: 4%;
+  top: 0;
+  padding-bottom: 20px;
+  background-color: transparent;
+}
+
+.form-control {
+  background-color: transparent;
+  color: black;
+}
+
+.home-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  padding-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.title {
   color: #444;
 }
 
@@ -168,6 +192,27 @@ li.class-content.is-open {
   display: block;
 }
 
+/* Header Img */
+
+.header-img {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  right: 0%;
+  bottom: auto;
+  opacity: 0.4;
+  margin: auto;
+  min-width: 100%;
+  min-height: 100%;
+
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='svgMask'><feGaussianBlur stdDeviation='10' /></filter></svg>#svgMask");
+}
+
 /* Cart */
 .cart {
   height: auto;
@@ -206,7 +251,7 @@ li.class-content.is-open {
   position: relative;
   background: linear-gradient(rgba(58, 55, 55, 0.1), rgba(103, 29, 29, 0.5)),
     url('../images/classes.jpeg') center / cover;
-  height: 150px;
+  height: 200px;
 }
 
 .card-body {
@@ -220,6 +265,49 @@ button.proceed {
   left: 23px;
 }
 
+/* Catalogue Stylings */
+.carousel {
+  top: -72px;
+}
+
+.carousel-caption {
+  bottom: -3%;
+  left: -25%;
+  text-shadow: black 0.1rem 0.1rem 0.1rem;
+}
+
+.cat-size {
+  font-size: 50px;
+}
+
+.subcat-size {
+  font-size: 25px;
+}
+
+.cat-bg {
+  background-image: radial-gradient(#6e84a4, #354864);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card.cat-input {
+  padding: 0;
+}
+
+#classes {
+  margin-bottom: 0;
+  margin-top: -10%;
+  background-color: var(--main-blue);
+}
+
+/* Footer */
+
+.test {
+  background-color: red;
+  height: 20%;
+}
 .link {
   color: var(--main-blue);
 }
@@ -317,6 +405,16 @@ div.success {
   #logo {
     width: 110px;
   }
+  .cat-size {
+    font-size: 1.9rem;
+  }
+  .subcat-size {
+    font-size: 0.9rem;
+  }
+  #classes {
+    margin-bottom: 0;
+    margin-top: -6%;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -336,6 +434,16 @@ div.success {
   #filter {
     width: 600px;
   }
+  .cat-size {
+    font-size: 2.5rem;
+  }
+  .subcat-size {
+    font-size: 1.5rem;
+  }
+  #classes {
+    margin-bottom: 0;
+    margin-top: -5%;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -344,10 +452,35 @@ div.success {
   #filter {
     width: 650px;
   }
+  .cat-size {
+    font-size: 2.7rem;
+  }
+  .subcat-size {
+    font-size: 1.5rem;
+  }
+  #classes {
+    margin-bottom: 0;
+    margin-top: -4%;
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+  .cat-size {
+    font-size: 3rem;
+  }
+  .subcat-size {
+    font-size: 2rem;
+  }
+  #classes {
+    margin-bottom: 0;
+    margin-top: -3%;
+  }
+
+  .carousel-caption {
+    bottom: 8%;
+    left: -33%;
+  }
 }
 
 /* Added this media query to log from jumping due to cascading */
@@ -356,9 +489,61 @@ div.success {
     left: 50%;
     transform: translateX(-50%);
   }
+
+  #classes {
+    margin-bottom: 0;
+    margin-top: -8%;
+  }
+
+  .carousel-caption {
+    bottom: -5%;
+    left: -25%;
+  }
   .login,
   .signup,
-  .register {
+  .register .register,
+  .search-bar {
     max-width: 90%;
+  }
+}
+
+/* Added just in case for top images */
+@media (max-width: 576px) {
+  .cat-size {
+    font-size: 1.4rem;
+  }
+
+  .subcat-size {
+    visibility: hidden;
+  }
+
+  .carousel-caption {
+    top: 40%;
+    left: -20%;
+  }
+
+  #classes {
+    margin-bottom: 0;
+    margin-top: -10%;
+  }
+}
+
+@media (max-width: 360px) {
+  .cat-size {
+    font-size: 1.4rem;
+  }
+
+  .subcat-size {
+    visibility: hidden;
+  }
+
+  .carousel-caption {
+    top: 25%;
+    left: -20%;
+  }
+
+  #classes {
+    margin-bottom: 0;
+    margin-top: -15%;
   }
 }
