@@ -294,17 +294,18 @@
           $('.regClasses').on('click', '.dropBtn', function() {
             var name = $(this).data('name');
             var id = $(this).data('classid');
-            $('.dropModal')
-              .removeClass('d-none')
-              .find('#dropSubmit')
-              .attr('classid', id);
-
-            console.log($('.dropModal').find('#dropSubmit'));
-            // .attr({ 'data-className': name, 'data-classId': id });
+            $('.dropModal').removeClass('d-none');
+            $('.dropSubmit').attr('data-classid', id);
             $('#classToDrop')
               .empty()
               .append(`${name}?`);
             $('.navbar').removeClass('sticky-top');
+
+            $('.dropSubmit').on('click', function(e) {
+              e.preventDefault();
+              var $classId = this.dataset.classid;
+              var $studentId = this.dataset.studentid;
+            });
           });
         }
       });
