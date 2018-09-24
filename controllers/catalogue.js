@@ -4,7 +4,7 @@ var Class = require('../models/class');
 var selectAuthenticated = require('../helpers/authMiddleware')
   .selectAuthenticated;
 
-//Only run this code to reseed classes data after running the schema file first.
+// Only run this code to reseed classes data after running the schema file first.
 
 // var classes = require('../db/classes');
 // classes.forEach(function(classObj) {
