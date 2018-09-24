@@ -37,6 +37,21 @@ var orm = {
       }
       cb(result);
     });
+  },
+
+  updateOne: function(table, values, condition, cb) {
+    let queryString = 'UPDATE ' + table;
+    queryString += ' SET ';
+    queryString += values;
+    queryString += ' WHERE ';
+    queryString += condition;
+    queryString += ';';
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
   }
 };
 

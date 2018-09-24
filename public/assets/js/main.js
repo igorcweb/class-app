@@ -206,12 +206,26 @@
   });
 
   $('.proceed').on('click', function() {
-    console.log('clicked');
     $('.regModal').removeClass('d-none');
     $('.navbar').removeClass('sticky-top');
   });
+
   $('#cancel').on('click', function(e) {
     e.preventDefault();
     $('.regModal').addClass('d-none');
+  });
+
+  $('#reg').on('click', function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    //Converting to string for database
+    var registeredIds = { registeredIds: selectedIds.join(',') };
+
+    $.ajax('/api/students/' + id, {
+      type: 'PUT',
+      data: registeredIds
+    }).then(function() {
+      location.replace('/');
+    });
   });
 })();

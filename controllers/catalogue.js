@@ -20,9 +20,15 @@ var selectAuthenticated = require('../helpers/authMiddleware')
 // });
 
 router.get('/', function(req, res) {
+  var id;
+  //If student is logged in
+  if (req.user) {
+    id = req.user[0].id;
+  }
   Class.selectAll('classes', function(results) {
     res.render('catalogue', {
-      classes: results
+      classes: results,
+      id
     });
   });
 });
