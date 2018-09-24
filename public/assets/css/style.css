@@ -70,6 +70,22 @@ body {
   background-color: transparent;
 }
 
+.form-control {
+  background-color: transparent;
+  color: black;
+}
+
+.home-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  padding-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
 .title {
   color: #444;
 }
