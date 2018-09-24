@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var Class = require('../models/class');
-var selectAuthenticated = require('../helpers/authMiddleware')
-  .selectAuthenticated;
 
 //Only run this code to reseed classes data after running the schema file first.
 

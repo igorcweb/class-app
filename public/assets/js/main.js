@@ -18,7 +18,7 @@
     $('#navNum').text(selectedIds.length);
   }
 
-  // //Navbar button
+  // Navbar button
   $('.navbar-toggler-icon').on('click', function(e) {
     console.log($('.collapse'));
     $('#logo').toggleClass('logo-center');
@@ -71,6 +71,136 @@
   //Disable select buttons for registered classes
   var studentId = $('.catalogue').data('studentid');
   $.get('/api/students').then(function(results) {
+    $.get('/api/classes', function(data) {
+      classes.on('click', '.select', function(e) {
+        e.stopPropagation();
+        var $this = $(this);
+        $this.attr('disabled', true);
+        // Clearing out the input
+        filter.val('');
+        // Displaying all classes
+        $.each(lis, function(index, li) {
+          $(li).addClass('d-block');
+        });
+        //closing description
+        $this.closest('li').removeClass('is-open');
+        //rotating carret back
+        $this
+          .closest('li')
+          .prev()
+          .removeClass('is-open');
+        //Geting variables from data attributes (destructuring)
+        var { classId, tuition } = this.dataset;
+        subtotal += parseFloat(tuition);
+        var fees = (subtotal / 100) * 6;
+        var total = subtotal + fees;
+        $('.subtotal').text(subtotal.toFixed(2));
+        $('#fees').text(fees.toFixed(2));
+        $('#total').text(total.toFixed(2));
+        $this.addClass('selected');
+        cart.addClass('show');
+        // Display Class Name in Card When Selected
+        if ($this.hasClass('selected')) {
+          selectedIds.push(classId);
+          //removing duplicate values
+          selectedIds = Array.from(new Set(selectedIds));
+        }
+
+        addedClasses.empty();
+        addedClassesReg.empty();
+
+        $.each(data, function(index, value) {
+          var { id, name, semester, tuition } = value;
+          if (selectedIds.includes(id.toString())) {
+            var classTitle =
+              `<li class="mb-2 added-class">${name}` +
+              `<i class="fas fa-times" data-class-id="${classId}"></i>` +
+              `</li><hr>`;
+            var classTitleReg = `
+            <li class="mb-1 added-class">${name}, ${semester}<br>Tuition: $${tuition}</li><hr>
+          `;
+            addedClasses.append(classTitle);
+            addedClassesReg.append(classTitleReg);
+            renderNumClasses();
+          }
+        });
+
+        //Prevent adding more than 5 classes
+        console.log(regCount);
+        if (selectedIds.length + regCount === 5) {
+          $.each(select, function(index, selectButton) {
+            if ($(selectButton).data('available-spaces') > 0) {
+              $(selectButton).attr('disabled', 'true');
+              $('.limit').removeClass('d-none');
+            }
+          });
+        }
+        //Hide cart if empty
+        if (!selectedIds.length) {
+          cart.removeClass('show');
+        }
+      });
+
+      cart.on('click', '.fa-times', function(e) {
+        e.stopPropagation();
+        var className = $(this)
+          .closest('li')
+          .text();
+        $.each(data, function(index, obj) {
+          if (className === obj.name) {
+            var { tuition } = obj;
+            subtotal -= parseFloat(tuition);
+            $('#subtotal').text(subtotal.toFixed(2));
+            var indexToRemove = selectedIds.indexOf(obj.id.toString());
+            selectedIds.splice(indexToRemove, 1);
+          }
+        });
+        $.each(select, function(index, selectButton) {
+          //Enabling buttons/removing alerts
+          if (
+            $(selectButton).data('available-spaces') > 0 &&
+            !selectedIds.includes(
+              $(selectButton)
+                .data('classId')
+                .toString()
+            )
+          ) {
+            $(selectButton).attr('disabled', false);
+            $('.limit').addClass('d-none');
+          }
+        });
+        addedClasses.empty();
+        addedClassesReg.empty();
+        $.each(data, function(index, value) {
+          var { id, name, semester, tuition } = value;
+          if (selectedIds.includes(id.toString())) {
+            var classTitle = `
+            <li class="mb-2 added-class">${name}<i class="fas fa-times"></i></li>
+            <hr>
+            `;
+            var classTitleReg = `
+            <li class="mb-1 added-class">${name}, ${semester}<br>Tuition: $${tuition}</li><hr>
+          `;
+            addedClasses.append(classTitle);
+            addedClassesReg.append(classTitleReg);
+            //Rendering number of classes
+            renderNumClasses();
+          }
+          if (!selectedIds.length) {
+            renderNumClasses();
+            //Hide cart if empty
+            cart.removeClass('show');
+          }
+        });
+      });
+
+      //Hide cart on outside click (except for hamburger menu button)
+      $(document).on('click', function(e) {
+        if (!$(e.target).hasClass('navbar-toggler-icon')) {
+          cart.removeClass('show');
+        }
+      });
+    });
     var registeredIds;
     results.forEach(function(student) {
       if (student.id === studentId) {
@@ -97,147 +227,15 @@
             }
           });
         }
-
-        $.get('/api/classes', function(data) {
-          classes.on('click', '.select', function(e) {
-            e.stopPropagation();
-            var $this = $(this);
-            $this.attr('disabled', true);
-            // Clearing out the input
-            filter.val('');
-            // Displaying all classes
-            $.each(lis, function(index, li) {
-              $(li).addClass('d-block');
-            });
-            //closing description
-            $this.closest('li').removeClass('is-open');
-            //rotating carret back
-            $this
-              .closest('li')
-              .prev()
-              .removeClass('is-open');
-            //Geting variables from data attributes (destructuring)
-            var { classId, tuition } = this.dataset;
-            subtotal += parseFloat(tuition);
-            var fees = (subtotal / 100) * 6;
-            var total = subtotal + fees;
-            $('.subtotal').text(subtotal.toFixed(2));
-            $('#fees').text(fees.toFixed(2));
-            $('#total').text(total.toFixed(2));
-            $this.addClass('selected');
-            cart.addClass('show');
-            // Display Class Name in Card When Selected
-            if ($this.hasClass('selected')) {
-              selectedIds.push(classId);
-              //removing duplicate values
-              selectedIds = Array.from(new Set(selectedIds));
-            }
-
-            addedClasses.empty();
-            addedClassesReg.empty();
-
-            $.each(data, function(index, value) {
-              var { id, name, semester, tuition } = value;
-              if (selectedIds.includes(id.toString())) {
-                var classTitle =
-                  `<li class="mb-2 added-class">${name}` +
-                  `<i class="fas fa-times" data-class-id="${classId}"></i>` +
-                  `</li><hr>`;
-                var classTitleReg = `
-            <li class="mb-1 added-class">${name}, ${semester}<br>Tuition: $${tuition}</li><hr>
-          `;
-                addedClasses.append(classTitle);
-                addedClassesReg.append(classTitleReg);
-                renderNumClasses();
-              }
-            });
-
-            //Prevent adding more than 5 classes
-            console.log(regCount);
-            if (selectedIds.length + regCount === 5) {
-              $.each(select, function(index, selectButton) {
-                if ($(selectButton).data('available-spaces') > 0) {
-                  $(selectButton).attr('disabled', 'true');
-                  $('.limit').removeClass('d-none');
-                }
-              });
-            }
-            //Hide cart if empty
-            if (!selectedIds.length) {
-              cart.removeClass('show');
-            }
-          });
-
-          cart.on('click', '.fa-times', function(e) {
-            e.stopPropagation();
-            var className = $(this)
-              .closest('li')
-              .text();
-            $.each(data, function(index, obj) {
-              if (className === obj.name) {
-                var { tuition } = obj;
-                subtotal -= parseFloat(tuition);
-                $('#subtotal').text(subtotal.toFixed(2));
-                var indexToRemove = selectedIds.indexOf(obj.id.toString());
-                selectedIds.splice(indexToRemove, 1);
-              }
-            });
-            $.each(select, function(index, selectButton) {
-              //Enabling buttons/removing alerts
-              if (
-                $(selectButton).data('available-spaces') > 0 &&
-                !selectedIds.includes(
-                  $(selectButton)
-                    .data('classId')
-                    .toString()
-                )
-              ) {
-                $(selectButton).attr('disabled', false);
-                $('.limit').addClass('d-none');
-              }
-            });
-            addedClasses.empty();
-            addedClassesReg.empty();
-            $.each(data, function(index, value) {
-              var { id, name, semester, tuition } = value;
-              if (selectedIds.includes(id.toString())) {
-                var classTitle = `
-            <li class="mb-2 added-class">${name}<i class="fas fa-times"></i></li>
-            <hr>
-            `;
-                var classTitleReg = `
-            <li class="mb-1 added-class">${name}, ${semester}<br>Tuition: $${tuition}</li><hr>
-          `;
-                addedClasses.append(classTitle);
-                addedClassesReg.append(classTitleReg);
-                //Rendering number of classes
-                renderNumClasses();
-              }
-              if (!selectedIds.length) {
-                renderNumClasses();
-                //Hide cart if empty
-                cart.removeClass('show');
-              }
-            });
-          });
-
-          //Hide cart on outside click (except for hamburger menu button)
-          $(document).on('click', function(e) {
-            if (!$(e.target).hasClass('navbar-toggler-icon')) {
-              cart.removeClass('show');
-            }
-          });
-
-          //Cart Link
-          $('#cartLink').on('click', function(e) {
-            e.stopPropagation();
-            cart.toggleClass('show');
-            $('.collapse').removeClass('show');
-            $('#logo').removeClass('logo-center');
-          });
-        });
       }
     });
+  });
+  //Cart Link
+  $('#cartLink').on('click', function(e) {
+    e.stopPropagation();
+    cart.toggleClass('show');
+    $('.collapse').removeClass('show');
+    $('#logo').removeClass('logo-center');
   });
 
   $('.proceed').on('click', function() {
