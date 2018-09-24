@@ -3,9 +3,9 @@
 </div>
 
 <div class="container">
+    {{> catalogue/cart-block}}
     <div class="home-page mx-auto col-sm-10 col-md-8 col-lg-6 col-xl-8">
         <h2 class="text-center">Welcome {{first_name}} {{last_name}}!</h2>
-        {{> catalogue/cart-block}}
         {{#if registeredIds}}
         <h4 class="text-center">Here are your classes:</h4>
         {{else}}
