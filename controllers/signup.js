@@ -5,10 +5,10 @@ var bcrypt = require('bcryptjs');
 var ensureLoggedOut = require('../helpers/authMiddleware').ensureLoggedOut;
 
 var Student = require('../models/student');
-var schema = require('../controllers/joiSchema');
+var schema = require('./joiSchema');
 
 router.get('/', ensureLoggedOut, function(req, res) {
-  res.render('register', {
+  res.render('signup', {
     urlPath: req.baseUrl
   });
 });
@@ -29,7 +29,7 @@ router.post('/', function(req, res) {
             'error',
             'There is already an account associated with this email'
           );
-          return res.render('register', {
+          return res.render('signup', {
             error: req.flash('error')
           });
         } else {
@@ -57,7 +57,7 @@ router.post('/', function(req, res) {
       });
     } else {
       req.flash('error', err.message);
-      res.render('register', { error: err.message });
+      res.render('signup', { error: err.message });
     }
   });
 });

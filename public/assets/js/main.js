@@ -64,6 +64,8 @@
   });
   var cart = $('.cart');
   var addedClasses = $('.addedClasses');
+  var addedClassesReg = $('.addedClassesReg');
+
   var subtotal = 0;
   $.get('/api/classes', function(data) {
     classes.on('click', '.select', function(e) {
@@ -84,9 +86,13 @@
         .prev()
         .removeClass('is-open');
       //Geting variables from data attributes (destructuring)
-      var { classId, className, tuition } = this.dataset;
+      var { classId, tuition } = this.dataset;
       subtotal += parseFloat(tuition);
-      $('#subtotal').text(subtotal.toFixed(2));
+      var fees = (subtotal / 100) * 6;
+      var total = subtotal + fees;
+      $('.subtotal').text(subtotal.toFixed(2));
+      $('#fees').text(fees.toFixed(2));
+      $('#total').text(total.toFixed(2));
       $this.addClass('selected');
       cart.addClass('show');
       // Display Class Name in Card When Selected
@@ -97,16 +103,20 @@
       }
 
       addedClasses.empty();
+      addedClassesReg.empty();
 
       $.each(data, function(index, value) {
-        if (selectedIds.includes(value.id.toString())) {
+        var { id, name, semester, tuition } = value;
+        if (selectedIds.includes(id.toString())) {
           var classTitle =
-            '<li class="mb-2 added-class">' +
-            value.name +
+            `<li class="mb-2 added-class">${name}` +
             `<i class="fas fa-times" data-class-id="${classId}"></i>` +
-            '</li>' +
-            '<hr>';
+            `</li><hr>`;
+          var classTitleReg = `
+            <li class="mb-1 added-class">${name}, ${semester}<br>Tuition: $${tuition}</li><hr>
+          `;
           addedClasses.append(classTitle);
+          addedClassesReg.append(classTitleReg);
           renderNumClasses();
         }
       });
@@ -155,15 +165,19 @@
         }
       });
       addedClasses.empty();
+      addedClassesReg.empty();
       $.each(data, function(index, value) {
-        if (selectedIds.includes(value.id.toString())) {
-          var classTitle =
-            '<li class="mb-2 added-class">' +
-            value.name +
-            `<i class="fas fa-times"></i>` +
-            '</li>' +
-            '<hr>';
+        var { id, name, semester, tuition } = value;
+        if (selectedIds.includes(id.toString())) {
+          var classTitle = `
+            <li class="mb-2 added-class">${name}<i class="fas fa-times"></i></li>
+            <hr>
+            `;
+          var classTitleReg = `
+            <li class="mb-1 added-class">${name}, ${semester}<br>Tuition: $${tuition}</li><hr>
+          `;
           addedClasses.append(classTitle);
+          addedClassesReg.append(classTitleReg);
           //Rendering number of classes
           renderNumClasses();
         }
@@ -189,5 +203,15 @@
       $('.collapse').removeClass('show');
       $('#logo').removeClass('logo-center');
     });
+  });
+
+  $('.proceed').on('click', function() {
+    console.log('clicked');
+    $('.regModal').removeClass('d-none');
+    $('.navbar').removeClass('sticky-top');
+  });
+  $('#cancel').on('click', function(e) {
+    e.preventDefault();
+    $('.regModal').addClass('d-none');
   });
 })();

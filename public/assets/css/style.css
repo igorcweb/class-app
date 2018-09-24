@@ -6,18 +6,20 @@
 :root {
   --main-blue: #6d83a5;
   --main-blue-hover: #617696;
+  --main-red: rgba(234, 41, 41, 0.85);
+  --main-red-hover: #ea2929;
 }
 
 body {
   background-color: #fefefe;
   font-family: 'Roboto', sans-serif;
+  color: #444;
 }
 
 /* Navbar */
 #logo {
   position: absolute;
   top: 10px;
-
   width: 80px;
 }
 
@@ -52,6 +54,7 @@ body {
 
 /* Forms */
 .login,
+.signup,
 .register {
   position: absolute;
   top: 50%;
@@ -63,7 +66,8 @@ body {
   background-color: #f9f9f9;
 }
 
-.search-bar{
+.register .title,
+.search-bar {
   margin: 4%;
   top: 0;
   padding-bottom: 20px;
@@ -97,7 +101,7 @@ body {
   font-size: 1.5rem;
 }
 
-.title-register::before {
+.title-signup::before {
   position: relative;
   bottom: 1px;
   font-family: 'FontAwesome';
@@ -144,6 +148,12 @@ ul.addedClasses {
   width: 254px;
 }
 
+ul.addedClassesReg {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0 !important;
+}
+
 li.added-class {
   position: relative;
 }
@@ -156,15 +166,14 @@ li.added-class {
   top: 50%;
   transform: translateY(-50%);
   right: 0;
-  color: rgba(234, 41, 41, 0.8);
-
+  color: var(--main-red);
   float: right;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .fa-times:hover {
-  color: #ea2929;
+  color: var(--main-red-hover);
 }
 
 li.class-name.is-open::before {
@@ -186,13 +195,13 @@ li.class-content.is-open {
 /* Header Img */
 
 .header-img {
-  position: absolute; 
+  position: absolute;
   left: 0%;
   top: 0%;
   right: 0%;
   bottom: auto;
   opacity: 0.4;
-  margin: auto; 
+  margin: auto;
   min-width: 100%;
   min-height: 100%;
 
@@ -279,12 +288,12 @@ button.proceed {
   background-image: radial-gradient(#6e84a4, #354864);
   position: fixed;
   top: 0;
-  width: 100%; 
+  width: 100%;
   height: 100%;
 }
 
 .card.cat-input {
-padding: 0;
+  padding: 0;
 }
 
 #classes {
@@ -296,7 +305,7 @@ padding: 0;
 /* Footer */
 
 .test {
-  background-color:red;
+  background-color: red;
   height: 20%;
 }
 .link {
@@ -305,6 +314,25 @@ padding: 0;
 .link:hover {
   color: var(--main-blue-hover);
   text-decoration: none;
+}
+
+/* Register Modal */
+.regModal {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.btn.bg-red {
+  background-color: var(--main-red);
+}
+
+.btn.bg-red:hover {
+  background-color: var(--main-red-hover);
 }
 
 /* Validation Flash Messages */
@@ -381,7 +409,7 @@ div.success {
     font-size: 1.9rem;
   }
   .subcat-size {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
   #classes {
     margin-bottom: 0;
@@ -472,19 +500,19 @@ div.success {
     left: -25%;
   }
   .login,
-  .register,
+  .signup,
+  .register .register,
   .search-bar {
     max-width: 90%;
   }
 }
-
 
 /* Added just in case for top images */
 @media (max-width: 576px) {
   .cat-size {
     font-size: 1.4rem;
   }
-  
+
   .subcat-size {
     visibility: hidden;
   }
@@ -504,7 +532,7 @@ div.success {
   .cat-size {
     font-size: 1.4rem;
   }
-  
+
   .subcat-size {
     visibility: hidden;
   }
