@@ -12,7 +12,7 @@ var expressMessages = require('express-messages');
 var { SESSION_SECRET } = process.env;
 
 var routes = require('./controllers');
-var register = require('./controllers/register');
+var signup = require('./controllers/signup');
 var login = require('./controllers/login');
 var logout = require('./controllers/logout');
 var classes = require('./controllers/api/classes');
@@ -66,7 +66,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(routes);
-app.use('/register', register);
+app.use('/signup', signup);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/api/classes', classes);
