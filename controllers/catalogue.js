@@ -28,7 +28,7 @@ router.get('/', function(req, res) {
   Class.selectAll('classes', function(results) {
     res.render('catalogue', {
       classes: results,
-      id
+      studentId: id
     });
   });
 });

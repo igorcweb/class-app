@@ -8,12 +8,18 @@ router.get('/', function(req, res) {
   });
 });
 
-router.put('/:id', function(req, res) {
+router.put('/register/:id', function(req, res) {
   var condition = 'id = ' + req.params.id;
   //Getting current classes
   Student.findOne('registeredIds', 'students', condition, function(results) {
     var currentIds = results[0].registeredIds;
-    var totalIds = currentIds + ',' + req.body.registeredIds;
+    var totalIds;
+    if (currentIds) {
+      totalIds = currentIds + ',' + req.body.registeredIds;
+    } else {
+      totalIds = req.body.registeredIds;
+    }
+
     console.log(totalIds);
     //Adding new classes
     Student.updateOne(
