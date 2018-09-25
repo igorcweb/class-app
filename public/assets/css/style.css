@@ -257,6 +257,9 @@ button.proceed {
 /* Validation Flash Messages */
 ul.success li,
 ul.error li {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   list-style: none;
   padding: 10px 0;
   margin-bottom: 20px;
@@ -277,12 +280,13 @@ ul.error li {
 
 div.alert,
 div.success {
+  max-width: 650px;
   border: 1px solid transparent;
   border-radius: 4px;
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
-  margin: 10px 0;
+  margin: 10px auto;
   padding: 10px 0;
   text-align: center;
 }
@@ -315,6 +319,11 @@ div.success {
   #logo {
     width: 110px;
   }
+  div.alert,
+  div.success,
+  ul.error {
+    width: 520px;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -334,6 +343,12 @@ div.success {
   #filter {
     width: 600px;
   }
+
+  div.alert,
+  div.success,
+  ul.error {
+    width: 550px;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -341,6 +356,11 @@ div.success {
   ul.classes,
   #filter {
     width: 650px;
+  }
+  div.alert,
+  div.success,
+  ul.error {
+    width: 600px;
   }
 }
 
@@ -357,7 +377,10 @@ div.success {
   .login,
   .signup,
   .register,
-  .drop {
+  .drop,
+  div.alert,
+  div.success,
+  ul.error {
     max-width: 90%;
   }
 
