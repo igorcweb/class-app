@@ -255,7 +255,8 @@ button.proceed {
 }
 
 /* Validation Flash Messages */
-ul.success li {
+ul.success li,
+ul.error li {
   list-style: none;
   padding: 10px 0;
   margin-bottom: 20px;
@@ -269,18 +270,13 @@ ul.success li {
 }
 
 ul.error li {
-  padding: 10px 0;
-  margin-bottom: 20px;
-  padding-left: 0;
-  border: 1px solid transparent;
-  border-radius: 4px;
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
-  text-align: center;
 }
 
-div.alert {
+div.alert,
+div.success {
   border: 1px solid transparent;
   border-radius: 4px;
   color: #a94442;
@@ -292,14 +288,9 @@ div.alert {
 }
 
 div.success {
-  border: 1px solid transparent;
-  border-radius: 4px;
   color: #3c763d;
   background-color: #dff0d8;
   border-color: #d6e9c6;
-  margin: 10px 0;
-  padding: 10px 0;
-  text-align: center;
 }
 
 /* Small devices (landscape phones, 576px and up) */
