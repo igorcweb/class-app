@@ -292,10 +292,10 @@
           $.get('/api/classes').then(function(classesData) {
             $.each(classesData, function(index, $class) {
               if (registeredIds.includes($class.id.toString())) {
-                var { id, name, code, semester } = $class;
+                var { id, name, code, semester, availableSpaces } = $class;
                 var regClass = `
                 <li class="list-group-item list-group-item-action">
-                  ${code}, ${name}, ${semester} <button class="dropBtn btn btn-sm bg-red text-white" data-classid="${id}" data-code="${code}" data-name="${name}" data-semester="${semester}">DROP</button>
+                  ${code}, ${name}, ${semester} <button class="dropBtn btn btn-sm bg-red text-white" data-classid="${id}" data-code="${code}" data-name="${name}" data-semester="${semester}" data-availableSpaces="${availableSpaces}">DROP</button>
                 </li>
                 `;
                 $('.regClasses').append(regClass);
@@ -305,8 +305,13 @@
           $('.regClasses').on('click', '.dropBtn', function() {
             var name = $(this).data('name');
             var id = $(this).data('classid');
+            var availableSpaces = $(this).data('availablespaces');
+            console.log($(this).data());
             $('.dropModal').removeClass('d-none');
-            $('.dropSubmit').attr('data-classid', id);
+            $('.dropSubmit').attr({
+              'data-classid': id,
+              'data-availableSpaces': availableSpaces
+            });
             $('#classToDrop')
               .empty()
               .append(`${name}?`);
@@ -316,6 +321,14 @@
             e.preventDefault();
             $('.navbar').addClass('sticky-top');
             var $classId = this.dataset.classid;
+            var availableSpaces = this.dataset.availablespaces;
+            console.log(availableSpaces);
+            $.ajax('/api/classes/drop/' + $classId, {
+              type: 'PUT',
+              data: availableSpaces
+            }).then(function() {
+              console.log('success');
+            });
             $.ajax('/api/students/drop/' + id, {
               type: 'PUT',
               data: { $classId }
