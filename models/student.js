@@ -16,9 +16,9 @@ var student = {
       cb(result);
     });
   },
-  updateOne: function(table, objColVals, condition, cb) {
-    orm.updateOne(table, objColVals, condition, res => {
-      cb(res);
+  updateOne: function(table, values, condition, cb) {
+    orm.updateOne(table, values, condition, function(result) {
+      cb(result);
     });
   }
 };

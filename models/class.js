@@ -15,6 +15,11 @@ var Class = {
     orm.findOne(col, table, condition, function(result) {
       cb(result);
     });
+  },
+  updateOne: function(table, values, condition, cb) {
+    orm.updateOne(table, values, condition, function(result) {
+      cb(result);
+    });
   }
 };
 

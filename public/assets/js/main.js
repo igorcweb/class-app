@@ -255,9 +255,25 @@
     e.preventDefault();
     $('.navbar').addClass('sticky-top');
     var id = $(this).data('id');
+    //Updating available classes
+    $.each(selectedIds, function(index, classId) {
+      $.get('/api/classes').then(function(data) {
+        $.each(data, function(index, $class) {
+          // console.log($class.id, parseclassId);
+          if ($class.id === parseInt(classId)) {
+            var availableSpaces = $class.availableSpaces;
+            $.ajax('/api/classes/register/' + classId, {
+              type: 'PUT',
+              data: availableSpaces
+            }).then(function() {
+              console.log(data);
+            });
+          }
+        });
+      });
+    });
     //Converting to string for database
     var registeredIds = { registeredIds: selectedIds.join(',') };
-
     $.ajax('/api/students/register/' + id, {
       type: 'PUT',
       data: registeredIds
