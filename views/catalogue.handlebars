@@ -1,9 +1,22 @@
 <h2 class="text-center my-4 catalogue" data-studentid="{{studentId}}">Course Catalogue</h2>
 {{> catalogue/modal-block}}
+<div class="cat-bg">
+  <img class="d-block w-100 shadow header-img" src="/assets/images/catalog.jpg">
+</div>
+
+<div class="container">
+  <div class="search-bar mx-auto col-sm-10 col-md-8 col-lg-6 col-xl-8">
+    <h1 class="text-center">Course Catalogue</h1>
+    <p class="subcat-size text-center">Find the classes you need. Get to studying.</p>
+    <div class="input-group mb-2 d-block pb-.5 ">
+      <input class="form-control mx-auto" type="text" id="filter" placeholder="Search Classes">
+    </div>
+  </div>
+</div>
+
 {{> catalogue/cart-block}}
-<div id="classes">
-  <input class="d-block mx-auto mb-4 pb-2" type="text" id="filter" placeholder="Search Classes">
-  <ul class="classes list-group mx-auto mb-5">
+<div id="classes" class="container">
+  <ul class="classes list-group mx-auto pre-scrollable mb-5">
     {{#if isAuthenticated}}
     {{#each classes}}
     {{> catalogue/class-block}}

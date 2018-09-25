@@ -1,11 +1,21 @@
-<h2 class="text-center">Welcome {{first_name}} {{last_name}}!</h2>
-{{> index/drop-modal-block}}
-{{> catalogue/cart-block}}
-{{#if registeredIds}}
-<h4 class="text-center reg-classes mb-4" data-studentid="{{id}}">Here are your classes:</h4>
-<ul class="classes regClasses list-group mx-auto mb-4">
-</ul>
-{{else}}
-<h4 class="text-center mt-4">You haven't registered for any classes yet</h4>
-<h4 class="text-center">Click <a class="link" href="/catalogue">here </a> to see the Course Catalogue</h4>
-{{/if}}
+<div class="cat-bg">
+  <img class="d-block w-100 shadow header-img" src="/assets/images/index.jpg">
+</div>
+
+<div class="container">
+    {{> catalogue/cart-block}}
+    <div class="home-page mx-auto col-sm-10 col-md-8 col-lg-6 col-xl-8">
+        <h2 class="text-center">Welcome {{first_name}} {{last_name}}!</h2>
+        {{#if registeredIds}}
+            <h4 class="text-center reg-classes mb-4" data-studentid="{{id}}">Here are your classes:</h4>
+            
+            <ul class="classes regClasses list-group mx-auto mb-4">
+
+            </ul>
+        {{else}}
+            <h4 class="text-center mt-4">You haven't registered for any classes yet</h4>
+            <h4 class="text-center">Click <a class="link" href="/catalogue">here </a> to see the Course Catalogue</h4>
+        {{/if}}
+    </div>
+</div>
+
