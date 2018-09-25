@@ -61,8 +61,6 @@ router.put('/drop/:id', function(req, res) {
       }
     );
   });
-
-  // var condition = 'id = ' + req.user[0].id;
 });
 
 module.exports = router;

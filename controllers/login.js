@@ -8,7 +8,6 @@ var Student = require('../models/student');
 
 router.get('/', ensureLoggedOut, function(req, res) {
   res.render('login', {
-    urlPath: req.baseUrl,
     success: req.flash('success'),
     error: req.flash('error')
   });
