@@ -20,9 +20,7 @@
 
   // Navbar button
   $('.navbar-toggler-icon').on('click', function(e) {
-    console.log($('.collapse'));
     $('#logo').toggleClass('logo-center');
-    console.log('open');
   });
 
   //Search Filter
@@ -126,7 +124,6 @@
         });
 
         //Prevent adding more than 5 classes
-        console.log(regCount);
         if (selectedIds.length + regCount === 5) {
           $.each(select, function(index, selectButton) {
             if ($(selectButton).data('available-spaces') > 0) {
@@ -205,7 +202,6 @@
     results.forEach(function(student) {
       if (student.id === studentId) {
         registeredIds = student.registeredIds.split(',');
-        console.log(selectedIds);
         //Disabling registered buttons
         $.each(select, function(index, selectButton) {
           var classId = $(selectButton).data('class-id');
@@ -280,7 +276,6 @@
           $.get('/api/classes').then(function(classesData) {
             $.each(classesData, function(index, $class) {
               if (registeredIds.includes($class.id.toString())) {
-                console.log($class);
                 var { id, name, code, semester } = $class;
                 var regClass = `
                 <li class="list-group-item list-group-item-action">
