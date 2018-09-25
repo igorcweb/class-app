@@ -368,7 +368,7 @@ div.success {
 @media (min-width: 1200px) {
 }
 
-/* Added this media query to log from jumping due to cascading */
+/* Added this media query to prevent logo from jumping */
 @media (max-width: 767px) {
   .logo-center {
     left: 50%;
