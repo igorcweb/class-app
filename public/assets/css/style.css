@@ -74,6 +74,14 @@ body {
   background-color: transparent;
 }
 
+.search-bar {
+  color:#f3f3f3;
+}
+
+.search-bar input:hover {
+  background-color: white;
+}
+
 .form-control {
   background-color: transparent;
   color: black;
@@ -299,8 +307,8 @@ button.proceed {
 #classes {
   margin-bottom: 0;
   margin-top: -10%;
-  background-color: var(--main-blue);
 }
+
 
 /* Footer */
 

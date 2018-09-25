@@ -15,8 +15,8 @@
 </div>
 
 {{> catalogue/cart-block}}
-<div id="classes">
-  <ul class="classes list-group mx-auto mb-5">
+<div id="classes" class="container">
+  <ul class="classes list-group mx-auto pre-scrollable mb-5">
     {{#if isAuthenticated}}
     {{#each classes}}
     {{> catalogue/class-block}}
