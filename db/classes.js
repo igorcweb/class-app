@@ -3,7 +3,7 @@ var classes = [
     name: 'Multimedia: Theory and Practice in the Arts',
     code: 'AEA 678',
     semester: 'Spring 2019',
-    availableSpaces: 0,
+    availableSpaces: 1,
     description:
       'Explores new media in the arts, both in theory and in practice, particularly as it can be used in arts leadership.'
   },
