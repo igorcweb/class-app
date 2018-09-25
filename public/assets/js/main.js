@@ -300,11 +300,16 @@
               .empty()
               .append(`${name}?`);
             $('.navbar').removeClass('sticky-top');
-
-            $('.dropSubmit').on('click', function(e) {
-              e.preventDefault();
-              var $classId = this.dataset.classid;
-              var $studentId = this.dataset.studentid;
+          });
+          $('.dropSubmit').on('click', function(e) {
+            e.preventDefault();
+            $('.navbar').addClass('sticky-top');
+            var $classId = this.dataset.classid;
+            $.ajax('/api/students/drop/' + id, {
+              type: 'PUT',
+              data: { $classId }
+            }).then(function() {
+              location.replace('/');
             });
           });
         }
