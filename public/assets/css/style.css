@@ -254,6 +254,21 @@ button.proceed {
   float: right;
 }
 
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 35px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  color: #a0aab6;
+}
+
+.copyright {
+  padding: 6px;
+}
+
 /* Validation Flash Messages */
 ul.success li,
 ul.error li {
