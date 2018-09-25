@@ -20,9 +20,7 @@
 
   // Navbar button
   $('.navbar-toggler-icon').on('click', function(e) {
-    console.log($('.collapse'));
     $('#logo').toggleClass('logo-center');
-    console.log('open');
   });
 
   //Search Filter
@@ -126,7 +124,6 @@
         });
 
         //Prevent adding more than 5 classes
-        console.log(regCount);
         if (selectedIds.length + regCount === 5) {
           $.each(select, function(index, selectButton) {
             if ($(selectButton).data('available-spaces') > 0) {
@@ -205,7 +202,6 @@
     results.forEach(function(student) {
       if (student.id === studentId) {
         registeredIds = student.registeredIds.split(',');
-        console.log(selectedIds);
         //Disabling registered buttons
         $.each(select, function(index, selectButton) {
           var classId = $(selectButton).data('class-id');
@@ -246,10 +242,18 @@
   $('#cancel').on('click', function(e) {
     e.preventDefault();
     $('.regModal').addClass('d-none');
+    $('.navbar').addClass('sticky-top');
+  });
+
+  $('#dropCancel').on('click', function(e) {
+    e.preventDefault();
+    $('.dropModal').addClass('d-none');
+    $('.navbar').addClass('sticky-top');
   });
 
   $('#reg').on('click', function(e) {
     e.preventDefault();
+    $('.navbar').addClass('sticky-top');
     var id = $(this).data('id');
     //Converting to string for database
     var registeredIds = { registeredIds: selectedIds.join(',') };
@@ -263,7 +267,8 @@
   });
   //Display Registered Classes
   if ($('.reg-classes').data('studentid')) {
-    var id = $('.reg-classes').data('studentid');
+    var regClasses = $('.reg-classes');
+    var id = $(regClasses).data('studentid');
     $.get('/api/students').then(function(studentsData) {
       $.each(studentsData, function(index, student) {
         if (student.id === id) {
@@ -271,15 +276,35 @@
           $.get('/api/classes').then(function(classesData) {
             $.each(classesData, function(index, $class) {
               if (registeredIds.includes($class.id.toString())) {
-                console.log($class);
                 var { id, name, code, semester } = $class;
                 var regClass = `
                 <li class="list-group-item list-group-item-action">
-                  ${code}, ${name}, ${semester}
+                  ${code}, ${name}, ${semester} <button class="dropBtn btn btn-sm bg-red text-white" data-classid="${id}" data-code="${code}" data-name="${name}" data-semester="${semester}">DROP</button>
                 </li>
                 `;
                 $('.regClasses').append(regClass);
               }
+            });
+          });
+          $('.regClasses').on('click', '.dropBtn', function() {
+            var name = $(this).data('name');
+            var id = $(this).data('classid');
+            $('.dropModal').removeClass('d-none');
+            $('.dropSubmit').attr('data-classid', id);
+            $('#classToDrop')
+              .empty()
+              .append(`${name}?`);
+            $('.navbar').removeClass('sticky-top');
+          });
+          $('.dropSubmit').on('click', function(e) {
+            e.preventDefault();
+            $('.navbar').addClass('sticky-top');
+            var $classId = this.dataset.classid;
+            $.ajax('/api/students/drop/' + id, {
+              type: 'PUT',
+              data: { $classId }
+            }).then(function() {
+              location.replace('/');
             });
           });
         }
