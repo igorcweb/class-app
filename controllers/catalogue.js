@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var Class = require('../models/class');
-var selectAuthenticated = require('../helpers/authMiddleware')
-  .selectAuthenticated;
 
 // Only run this code to reseed classes data after running the schema file first.
 
@@ -20,9 +18,15 @@ var selectAuthenticated = require('../helpers/authMiddleware')
 // });
 
 router.get('/', function(req, res) {
+  var id;
+  //If student is logged in
+  if (req.user) {
+    id = req.user[0].id;
+  }
   Class.selectAll('classes', function(results) {
     res.render('catalogue', {
-      classes: results
+      classes: results,
+      studentId: id
     });
   });
 });

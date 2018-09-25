@@ -15,7 +15,26 @@ var student = {
     orm.findOne(col, table, condition, function(result) {
       cb(result);
     });
+  },
+  updateOne: function(table, objColVals, condition, cb) {
+    orm.updateOne(table, objColVals, condition, res => {
+      cb(res);
+    });
   }
 };
+
+// var condition = 'id = 1';
+// student.updateOne('students', { registeredIds: '1, 2, 3' }, condition, function(
+//   result
+// ) {
+//   console.log(result);
+// });
+
+// {
+//   if (result.changedRows === 0) {
+//     return releaseEvents.status(404).end();
+//   }
+//   res.status(200).end();
+// }
 
 module.exports = student;
