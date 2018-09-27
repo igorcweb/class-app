@@ -1,17 +1,38 @@
-<h2 class="text-center my-4 catalogue" data-studentid="{{studentId}}">Course Catalogue</h2>
-{{> catalogue/modal-block}}
-{{> catalogue/cart-block}}
-<div id="classes">
-  <input class="d-block mx-auto mb-4 pb-2" type="text" id="filter" placeholder="Search Classes">
-  <ul class="classes list-group mx-auto mb-5">
-    {{#if isAuthenticated}}
-    {{#each classes}}
-    {{> catalogue/class-block}}
-    {{/each}}
-    {{else}}
-    {{#each classes}}
-    {{> catalogue/class-block-loggedout}}
-    {{/each}}
-    {{/if}}
-  </ul>
+<style>
+  body {
+    background: url('/assets/images/classroom.jpg') no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+  }
+  .catalogue-page {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .overlay {
+    overflow: scroll;
+  }
+
+</style>
+<div class="overlay">
+  {{> catalogue/cart-block}}
+  {{> catalogue/modal-block}}
+  <div class="catalogue-page">
+    <h2 class="text-center catalogue" data-studentid="{{studentId}}">Course Catalogue</h2>
+    <div id="classes">
+      <input class="d-block mx-auto mb-4 pb-2" type="text" id="filter" placeholder="Search Classes">
+      <ul class="classes list-group mx-auto mb-5">
+        {{#if isAuthenticated}}
+        {{#each classes}}
+        {{> catalogue/class-block}}
+        {{/each}}
+        {{else}}
+        {{#each classes}}
+        {{> catalogue/class-block-loggedout}}
+        {{/each}}
+        {{/if}}
+      </ul>
+    </div>
+  </div>
 </div>
