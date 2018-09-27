@@ -76,6 +76,20 @@ h2.catalogue {
   letter-spacing: 1.5px;
 }
 
+h2.home,
+h4.home {
+  font-weight: 400;
+  color: #f3f3f3;
+}
+
+h2.home {
+  margin-top: 6.25rem;
+}
+
+h4.home {
+  font-size: 1.5rem;
+}
+
 #cartLink {
   cursor: pointer;
 }
@@ -349,8 +363,12 @@ div.success {
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-  h2.catalogue {
-    font-size: 3rem;
+  h2.catalogue,
+  h2.home {
+    font-size: 2.5rem;
+  }
+  h4.home {
+    font-size: 1.8rem;
   }
   .cart {
     top: 3.4rem;
@@ -376,6 +394,13 @@ div.success {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  h2.catalogue,
+  h2.home {
+    font-size: 3rem;
+  }
+  h4.home {
+    font-size: 2rem;
+  }
   #logo {
     top: 10px;
     width: 130px;
