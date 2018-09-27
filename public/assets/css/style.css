@@ -6,17 +6,36 @@
 :root {
   --main-blue: #6d83a5;
   --main-blue-hover: #617696;
-  --main-red: rgba(234, 41, 41, 0.85);
+  --main-red: #ea2929d9;
   --main-red-hover: #ea2929;
 }
 
 body {
-  background-color: #fefefe;
+  background-color: #f5f5f5;
   font-family: 'Roboto', sans-serif;
   color: #444;
 }
 
+body .overlay {
+  background-color: rgba(255, 255, 255, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+.bg {
+  background-image: radial-gradient(#6e84a4, #354864);
+  position: fixed;
+  top: 0;
+}
+
 /* Navbar */
+
+nav {
+  opacity: 0.9;
+}
 #logo {
   position: absolute;
   top: 10px;
@@ -64,7 +83,21 @@ body {
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   padding-bottom: 20px;
-  background-color: #f9f9f9;
+  background-color: rgba(249, 249, 249, 1);
+}
+
+.login,
+.signup {
+  background-color: rgba(249, 249, 249, 0.9);
+}
+
+.login input,
+.signup input {
+  opacity: 0.7;
+}
+
+.btn.transparent {
+  opacity: 0.8;
 }
 
 .register .title,
@@ -98,6 +131,7 @@ ul.classes,
   border-radius: 0;
   border-bottom: 3px solid rgba(0, 0, 0, 0.1);
   outline: none;
+  background: transparent;
 }
 
 #filter:focus {
@@ -147,7 +181,7 @@ li.added-class {
   color: var(--main-red);
   float: right;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s;
 }
 
 .fa-times:hover {
@@ -181,7 +215,6 @@ li.class-content.is-open {
   width: 300px;
   margin-right: -350px;
   transition: 0.3s ease-in-out;
-  overflow: scroll;
 }
 
 .cart.show {

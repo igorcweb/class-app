@@ -17,6 +17,7 @@
     "express-handlebars": "^3.0.0",
     "express-messages": "^1.0.1",
     "express-session": "^1.15.6",
+    "handlebars-helpers": "^0.10.0",
     "joi": "^13.6.0",
     "mysql2": "^1.6.1",
     "passport": "^0.4.0",

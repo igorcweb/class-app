@@ -1,4 +1,10 @@
-<h2 class="text-center">Welcome {{first_name}} {{last_name}}!</h2>
+{{#if baseUrl}}
+<style>
+
+</style>
+{{/if}}
+
+<h2 class="text-center mt-5">Welcome {{first_name}} {{last_name}}!</h2>
 {{> index/drop-modal-block}}
 {{> catalogue/cart-block}}
 {{#if registeredIds}}
