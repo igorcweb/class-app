@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "class registration app",
   "main": "server.js",
+  "engines": {
+    "node": "10.9.0"
+  },
   "scripts": {
     "start": "node server",
     "watch": "nodemon server"
