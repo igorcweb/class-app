@@ -1,0 +1,5 @@
+{
+  "name": "Class Registration App",
+  "description": "An app that lets users to create an account, view, register, and drop classes.  Technologies used are NodeJS, Express, MySQL, Passport.js",
+  "repository": "https://github.com/igorcweb/class-app"
+}

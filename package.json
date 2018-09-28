@@ -7,7 +7,7 @@
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
-  "author": "Igor Chernyshev, Sterling Smith, Cody Clark",
+  "authors": "Igor Chernyshev, Sterling Smith, Cody Clark",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -30,5 +30,9 @@
   },
   "engines": {
     "node": "10.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/igorcweb/class-app"
   }
 }
