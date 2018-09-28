@@ -8,12 +8,12 @@
   --main-blue-hover: #617696;
   --main-red: #ea2929d9;
   --main-red-hover: #ea2929;
+  --text-color: #444;
 }
 
 body {
-  background-color: #f5f5f5;
   font-family: 'Roboto', sans-serif;
-  color: #444;
+  color: var(--text-color);
 }
 
 body .overlay {
@@ -25,14 +25,7 @@ body .overlay {
   min-height: 100%;
 }
 
-.bg {
-  background-image: radial-gradient(#6e84a4, #354864);
-  position: fixed;
-  top: 0;
-}
-
 /* Navbar */
-
 nav {
   opacity: 0.9 !important;
 }
@@ -315,6 +308,15 @@ button.proceed {
 
 .dropBtn {
   float: right;
+}
+
+.link.catalogue {
+  color: var(--main-blue);
+  font-size: 1.2em;
+}
+
+.link.catalogue:hover {
+  color: var(--main-blue-hover);
 }
 
 /* Validation Flash Messages */

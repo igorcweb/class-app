@@ -8,6 +8,7 @@
     var selectedIds = [];
   }
   var regCount = 0;
+  var proceed = $('.proceed');
 
   function renderNumClasses() {
     if (selectedIds.length === 1) {
@@ -72,6 +73,7 @@
     $.get('/api/classes', function(data) {
       classes.on('click', '.select', function(e) {
         e.stopPropagation();
+        $(proceed).attr('disabled', false);
         var $this = $(this);
         $this.attr('disabled', true);
         // Clearing out the input
@@ -147,7 +149,10 @@
           if (className === obj.name) {
             var { tuition } = obj;
             subtotal -= parseFloat(tuition);
-            $('#subtotal').text(subtotal.toFixed(2));
+            if (!subtotal) {
+              $(proceed).attr('disabled', true);
+            }
+            $('.subtotal').text(subtotal.toFixed(2));
             var indexToRemove = selectedIds.indexOf(obj.id.toString());
             selectedIds.splice(indexToRemove, 1);
           }
@@ -234,8 +239,13 @@
     $('#logo').removeClass('logo-center');
   });
 
-  $('.proceed').on('click', function() {
+  if (!subtotal) {
+    $(proceed).attr('disabled', true);
+  }
+
+  $(proceed).on('click', function() {
     $('.regModal').removeClass('d-none');
+    console.log($(this));
     $('.navbar').removeClass('sticky-top');
   });
 

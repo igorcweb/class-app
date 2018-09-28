@@ -7,7 +7,7 @@
     "start": "node server",
     "watch": "nodemon server"
   },
-  "author": "Igor, Cody, Sterling, Neha",
+  "author": "Igor Chernyshev, Sterling Smith, Cody Clark",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
