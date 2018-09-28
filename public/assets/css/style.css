@@ -137,6 +137,12 @@ drop .title {
   font-size: 1.5rem;
 }
 
+.catalogue-page {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 ul.classes,
 #filter {
   width: 350px;
