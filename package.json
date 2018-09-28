@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "class registration app",
   "main": "server.js",
-  "engines": {
-    "node": "10.9.0"
-  },
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon server.js"
@@ -30,5 +27,8 @@
   "devDependencies": {
     "dotenv": "^6.0.0",
     "nodemon": "^1.18.4"
+  },
+  "engines": {
+    "node": "10.9.0"
   }
 }
