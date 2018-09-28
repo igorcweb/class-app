@@ -23,13 +23,7 @@ var classes = [
     description:
       'Study of the functions of an art museum collection, preservation, exhibitions, research and interpretation of art objects. Visits to North Texas museums required.'
   },
-  {
-    name: 'Seminar in Medieval Art',
-    code: 'AEA 580',
-    semester: 'Spring 2019',
-    availableSpaces: 4,
-    description: 'Selected problems in Medieval art.'
-  },
+
   {
     name: 'Digital Art Studio',
     code: 'ART 581',
@@ -254,6 +248,70 @@ var classes = [
     availableSpaces: 10,
     description:
       'Differential and integral calculus for algebraic, trigonometric functions, and other transcendental functions, with applications to curve sketching, velocity, maximum-minimum problems, area and volume.'
+  },
+  {
+    name: 'Studies in Music',
+    code: 'MUG 489',
+    semester: 'Spring 2019',
+    availableSpaces: 8,
+    description:
+      'Organized classes specifically designed to accommodate the needs of students and demands of program development that are not met by the regular offerings. Short courses and workshops on specific topics organized on a limited-offering basis.'
+  },
+  {
+    name: 'Music Cultures of the World',
+    code: 'MUE 303',
+    semester: 'Spring 2019',
+    availableSpaces: 8,
+    description:
+      'Survey of music cultures of Africa, the Americas, Asia and Oceania. Music traditions are studied from a perspective that emphasizes music as an integral part of society and culture.'
+  },
+  {
+    name: 'Studies in Latin-American Music',
+    code: '308',
+    semester: 'Spring 2019',
+    availableSpaces: 8,
+    description:
+      'Study of the traditional and popular music of Latin America in its cultural context using theoretical approaches of ethnomusicology and related disciplines. Countries and topics may vary.'
+  },
+  {
+    name: 'The Business of Music',
+    code: 'MUG 400',
+    semester: 'Spring 2019',
+    availableSpaces: 7,
+    description:
+      'Survey of the contemporary business of music, focusing on economic realities unique to the music industry and on available career options in music.'
+  },
+  {
+    name: 'Introduction to Philosophy',
+    code: 'PHI 105',
+    semester: 'Spring 2019',
+    availableSpaces: 8,
+    description:
+      'Survey of leading figures in the history of philosophy (from Ancient Greece, Medieval Europe, the Renaissance, Enlightenment, and the 20th century) and an examination of central areas of philosophy: metaphysics, epistemology, human nature, ethics, political theory and aesthetics.'
+  },
+  {
+    name: 'Introduction to Logic',
+    code: 'PHI 205',
+    semester: 'Spring 2019',
+    availableSpaces: 10,
+    description:
+      'Focus on critical thinking to develop the skills for making sound arguments and for evaluating the arguments of others in order to recognize the difference between arbitrary and well-reasoned judgments. Topics include deductive and inductive modes of practical reasoning, common fallacies, rules of inference, and the formal rules of logic.'
+  },
+  {
+    name: 'Social and Political Philosophy',
+    code: 'PHI 312',
+    semester: 'Spring 2019',
+    availableSpaces: 8,
+    description:
+      'Examines how people should live together in communities and what legitimate governing institutions best promote the ideals of freedom, justice, rights, democracy, equality and happiness. Topics include civil and human rights, social contract theory, economic justice, group identity, race and gender.'
+  },
+  {
+    name: 'American Philosophy',
+    code: 'PHI 336',
+    semester: 'Spring 2019',
+    availableSpaces: 8,
+    description:
+      'Examination of the major American philosophies, including pragmatism and process philosophy. Figures might include C.S. Pierce, William James, John Dewey, George Herbert Mead, Alfred North Whitehead, Hilary Putnam and Richard Rorty.'
   }
 ];
 
