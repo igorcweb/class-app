@@ -7,8 +7,8 @@
     "node": "10.9.0"
   },
   "scripts": {
-    "start": "node server",
-    "watch": "nodemon server"
+    "start": "node server.js",
+    "watch": "nodemon server.js"
   },
   "author": "Igor Chernyshev, Sterling Smith, Cody Clark",
   "license": "ISC",
