@@ -267,7 +267,7 @@ var classes = [
   },
   {
     name: 'Studies in Latin-American Music',
-    code: '308',
+    code: 'MUE 308',
     semester: 'Spring 2019',
     availableSpaces: 8,
     description:
