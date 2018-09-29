@@ -106,7 +106,7 @@ h4.home {
 .signup,
 .title-register {
   background-color: rgba(249, 249, 249, 0.9);
-  color: var(--main-blue-hover);
+  color: var(--main-blue);
 }
 
 .login input,
