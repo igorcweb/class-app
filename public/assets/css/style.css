@@ -265,7 +265,7 @@ li.class-content.is-open {
 .card-title-img {
   position: relative;
   background: linear-gradient(rgba(58, 55, 55, 0.1), rgba(103, 29, 29, 0.5)),
-    url('../images/classes.jpeg') center / cover;
+    url('/assets/images/cart.png') center / cover;
   height: 150px;
 }
 
@@ -288,7 +288,7 @@ button.proceed {
   text-decoration: none;
 }
 
-/* Register Modal */
+/* Modals */
 .regModal,
 .dropModal {
   position: fixed;
@@ -321,7 +321,7 @@ button.proceed {
   color: var(--main-blue-hover);
 }
 
-/* Validation Flash Messages */
+/* Flash Messages */
 ul.success li,
 ul.error li {
   position: absolute;
