@@ -1,5 +1,5 @@
 var connection = require('./connection');
-var printQuestionMarks = require('../helpers/orm').printQuestionMarks;
+import printQuestionMarks from '../helpers/orm';
 
 var orm = {
   selectAll: function(table, cb) {

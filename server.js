@@ -1,23 +1,23 @@
-var dotenv = require('dotenv');
+import dotenv from 'dotenv';
 dotenv.config();
-var express = require('express');
-var app = express();
-var PORT = process.env.PORT || 3000;
-var exphbs = require('express-handlebars');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var passport = require('passport');
-var flash = require('connect-flash');
-var expressMessages = require('express-messages');
-var { SESSION_SECRET } = process.env;
+import express from 'express';
+const app = express();
+const PORT = process.env.PORT || 3000;
+import exphbs from 'express-handlebars';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
+import passport from 'passport';
+import flash from 'connect-flash';
+import expressMessages from 'express-messages';
+const { SESSION_SECRET } = process.env;
 
-var routes = require('./controllers');
-var signup = require('./controllers/signup');
-var login = require('./controllers/login');
-var logout = require('./controllers/logout');
-var classes = require('./controllers/api/classes');
-var students = require('./controllers/api/students');
-var catalogue = require('./controllers/catalogue');
+import routes from './controllers';
+import signup from './controllers/signup';
+import login from './controllers/login';
+import logout from './controllers/logout';
+import classes from './controllers/api/classes';
+import students from './controllers/api/students';
+import catalogue from './controllers/catalogue';
 
 //Express native body parser middleware
 app.use(express.json());
@@ -65,6 +65,6 @@ app.use('/api/classes', classes);
 app.use('/api/students', students);
 app.use('/catalogue', catalogue);
 
-app.listen(PORT, function() {
+app.listen(PORT, () => {
   console.log('class-app is listening on port', PORT);
 });
