@@ -1,20 +1,19 @@
-var express = require('express');
-var router = express.Router();
-var Student = require('../../models/student');
+import express from 'express';
+const router = express.Router();
+import Student from '../../models/student';
 
 router.get('/', function(req, res) {
-  Student.selectAll('students', function(results) {
+  Student.selectAll('students', results => {
     res.json(results);
   });
 });
 
-router.put('/register/:id', function(req, res) {
+router.put('/register/:id', (req, res) => {
   var condition = 'id = ' + req.params.id;
   //Getting current classes
-  Student.findOne('registeredIds', 'students', condition, function(results) {
-    var currentIds = results[0].registeredIds;
-
-    var totalIds;
+  Student.findOne('registeredIds', 'students', condition, results => {
+    const currentIds = results[0].registeredIds;
+    let totalIds;
     if (currentIds) {
       totalIds = currentIds + ',' + req.body.registeredIds;
     } else {
@@ -25,7 +24,7 @@ router.put('/register/:id', function(req, res) {
       'students',
       `registeredIds = '${totalIds}'`,
       condition,
-      function(result) {
+      result => {
         if (result.changedRows === 0) {
           return releaseEvents.status(404).end();
         }
@@ -35,25 +34,23 @@ router.put('/register/:id', function(req, res) {
   });
 });
 
-router.put('/drop/:id', function(req, res) {
-  var condition = 'id = ' + req.params.id;
+router.put('/drop/:id', (req, res) => {
+  const condition = 'id = ' + req.params.id;
   //Getting current classes
-  Student.findOne('registeredIds', 'students', condition, function(results) {
-    var currentIds = results[0].registeredIds;
+  Student.findOne('registeredIds', 'students', condition, results => {
+    let currentIds = results[0].registeredIds;
 
-    currentIds = currentIds.split(',').map(function(num) {
-      return parseInt(num);
-    });
-    var idToDrop = req.body.$classId;
-    var indexToDrop = currentIds.indexOf(parseInt(idToDrop));
+    currentIds = currentIds.split(',').map(num => parseInt(num));
+    const idToDrop = req.body.$classId;
+    const indexToDrop = currentIds.indexOf(parseInt(idToDrop));
     currentIds.splice(indexToDrop, 1);
-    var totalIds = currentIds;
+    const totalIds = currentIds;
     //Dropping classes
     Student.updateOne(
       'students',
       `registeredIds = '${totalIds}'`,
       condition,
-      function(result) {
+      result => {
         if (result.changedRows === 0) {
           return releaseEvents.status(404).end();
         }
@@ -63,4 +60,4 @@ router.put('/drop/:id', function(req, res) {
   });
 });
 
-module.exports = router;
+export default router;

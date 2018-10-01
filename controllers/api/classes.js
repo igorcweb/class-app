@@ -1,24 +1,24 @@
-var express = require('express');
-var router = express.Router();
-var Class = require('../../models/class');
+import express from 'express';
+const router = express.Router();
+import Class from '../../models/class';
 
-router.get('/', function(req, res) {
-  Class.selectAll('classes', function(results) {
+router.get('/', (req, res) => {
+  Class.selectAll('classes', results => {
     res.json(results);
   });
 });
-router.put('/register/:id', function(req, res) {
-  var id = req.params.id;
-  var condition = 'id = ' + id;
-  Class.selectAll('classes', function(results) {
-    results.forEach(function($class) {
+router.put('/register/:id', (req, res) => {
+  const id = req.params.id;
+  const condition = 'id = ' + id;
+  Class.selectAll('classes', results => {
+    results.forEach($class => {
       if ($class.id === parseInt(req.params.id)) {
-        var availableSpaces = $class.availableSpaces - 1;
+        const availableSpaces = $class.availableSpaces - 1;
         Class.updateOne(
           'classes',
           `availableSpaces = '${availableSpaces}'`,
           condition,
-          function(result) {
+          result => {
             if (result.changedRows === 0) {
               return releaseEvents.status(404).end();
             }
@@ -29,18 +29,18 @@ router.put('/register/:id', function(req, res) {
     });
   });
 });
-router.put('/drop/:id', function(req, res) {
-  var id = req.params.id;
-  var condition = 'id = ' + id;
-  Class.selectAll('classes', function(results) {
-    results.forEach(function($class) {
+router.put('/drop/:id', (req, res) => {
+  const id = req.params.id;
+  const condition = 'id = ' + id;
+  Class.selectAll('classes', results => {
+    results.forEach($class => {
       if ($class.id === parseInt(req.params.id)) {
         var availableSpaces = $class.availableSpaces + 1;
         Class.updateOne(
           'classes',
           `availableSpaces = '${availableSpaces}'`,
           condition,
-          function(result) {
+          result => {
             if (result.changedRows === 0) {
               return releaseEvents.status(404).end();
             }
@@ -52,4 +52,4 @@ router.put('/drop/:id', function(req, res) {
   });
 });
 
-module.exports = router;
+export default router;

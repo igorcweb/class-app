@@ -1,4 +1,4 @@
-var orm = require('../config/orm');
+import orm from '../config/orm';
 
 var student = {
   insertOne: function(table, cols, vals, cb) {

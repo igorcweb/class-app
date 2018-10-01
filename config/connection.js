@@ -1,10 +1,10 @@
-var dotenv = require('dotenv');
+import dotenv from 'dotenv';
 dotenv.config();
-var mysql = require('mysql2');
+import mysql from 'mysql2';
 
-var { DB_USER, DB_PASS, DB_NAME, JAWSDB_URL } = process.env;
+const { DB_USER, DB_PASS, DB_NAME, JAWSDB_URL } = process.env;
 
-var config = {
+const config = {
   host: 'localhost',
   port: 3306,
   user: DB_USER,
@@ -12,8 +12,8 @@ var config = {
   database: DB_NAME
 };
 
-var connection;
-var host;
+let connection;
+let host;
 
 if (JAWSDB_URL) {
   connection = mysql.createConnection(JAWSDB_URL);
@@ -23,7 +23,7 @@ if (JAWSDB_URL) {
   host = 'locahost';
 }
 
-connection.connect(function(err) {
+connection.connect(err => {
   if (err) {
     console.log('error connecting', err);
     return false;
@@ -31,4 +31,4 @@ connection.connect(function(err) {
   console.log('connected with', host);
 });
 
-module.exports = connection;
+export default connection;
