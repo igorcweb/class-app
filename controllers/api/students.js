@@ -2,14 +2,14 @@ import express from 'express';
 const router = express.Router();
 import Student from '../../models/student';
 
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
   Student.selectAll('students', results => {
     res.json(results);
   });
 });
 
 router.put('/register/:id', (req, res) => {
-  var condition = 'id = ' + req.params.id;
+  const condition = 'id = ' + req.params.id;
   //Getting current classes
   Student.findOne('registeredIds', 'students', condition, results => {
     const currentIds = results[0].registeredIds;

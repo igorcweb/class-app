@@ -40,7 +40,7 @@ passport.use(
         const studentPassword = student.password;
         bcrypt
           .compare(password, studentPassword)
-          .then(function(isMatch) {
+          .then(isMatch => {
             if (isMatch) {
               console.log('isMatch:', isMatch);
               return done(null, student);
@@ -48,7 +48,7 @@ passport.use(
             console.log('isMatch:', isMatch);
             return done(null, false, { message: 'Incorrect Password' });
           })
-          .catch(function(err) {
+          .catch(err => {
             console.log('catch:', err);
           });
       });

@@ -35,7 +35,7 @@ router.put('/drop/:id', (req, res) => {
   Class.selectAll('classes', results => {
     results.forEach($class => {
       if ($class.id === parseInt(req.params.id)) {
-        var availableSpaces = $class.availableSpaces + 1;
+        const availableSpaces = $class.availableSpaces + 1;
         Class.updateOne(
           'classes',
           `availableSpaces = '${availableSpaces}'`,

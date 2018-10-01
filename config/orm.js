@@ -3,7 +3,7 @@ import { printQuestionMarks } from '../helpers/orm';
 
 const orm = {
   selectAll: (table, cb) => {
-    var queryString = 'SELECT * FROM ??';
+    const queryString = 'SELECT * FROM ??';
     connection.query(queryString, [table], (err, result) => {
       if (err) {
         throw err;
@@ -13,7 +13,7 @@ const orm = {
   },
 
   insertOne: (table, cols, vals, cb) => {
-    var queryString = 'INSERT INTO ' + table;
+    let queryString = 'INSERT INTO ' + table;
     queryString += ' (';
     queryString += cols.toString();
     queryString += ') ';
@@ -28,7 +28,7 @@ const orm = {
     });
   },
   findOne: (col, table, condition, cb) => {
-    var queryString = 'SELECT ' + col;
+    let queryString = 'SELECT ' + col;
     queryString += ' FROM ' + table;
     queryString += ' WHERE ' + condition;
     connection.query(queryString, (err, result) => {

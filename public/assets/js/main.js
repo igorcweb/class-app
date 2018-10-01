@@ -52,7 +52,7 @@
   const classes = $('ul.classes');
   className.on('click', function(e) {
     e.stopPropagation();
-    var $this = $(this);
+    const $this = $(this);
     $this.toggleClass('is-open');
     $this.next().toggleClass('is-open');
   });
@@ -75,7 +75,7 @@
       classes.on('click', '.select', function(e) {
         e.stopPropagation();
         $(proceed).attr('disabled', false);
-        var $this = $(this);
+        const $this = $(this);
         $this.attr('disabled', true);
         // Clearing out the input
         filter.val('');
@@ -143,7 +143,7 @@
 
       cart.on('click', '.fa-times', function(e) {
         e.stopPropagation();
-        var className = $(this)
+        const className = $(this)
           .closest('li')
           .text();
         $.each(data, (index, obj) => {
