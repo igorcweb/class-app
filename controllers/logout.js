@@ -1,11 +1,11 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express';
+const router = express.Router();
 
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
   req.logout();
   req.flash('success', 'You are now logged out');
   res.redirect('/login');
   req.session.destroy();
 });
 
-module.exports = router;
+export default router;

@@ -1,4 +1,4 @@
-var classes = [
+const classes = [
   {
     name: 'Multimedia: Theory and Practice in the Arts',
     code: 'AEA 678',

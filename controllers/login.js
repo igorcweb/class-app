@@ -1,25 +1,25 @@
-var express = require('express');
-var router = express.Router();
-var ensureLoggedOut = require('../helpers/authMiddleware').ensureLoggedOut;
-var bcrypt = require('bcryptjs');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var Student = require('../models/student');
+import express from 'express';
+const router = express.Router();
+import { ensureLoggedOut } from '../helpers/authMiddleware';
+import bcrypt from 'bcryptjs';
+import passport from 'passport';
+import { Strategy as LocalStrategy } from 'passport-local';
+import Student from '../models/student';
 
-router.get('/', ensureLoggedOut, function(req, res) {
+router.get('/', ensureLoggedOut, (req, res) => {
   res.render('login', {
     success: req.flash('success'),
     error: req.flash('error')
   });
 });
 
-passport.serializeUser(function(student, done) {
+passport.serializeUser((student, done) => {
   done(null, student.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  var condition = 'id = ' + id;
-  Student.findOne('*', 'students', condition, function(student) {
+passport.deserializeUser((id, done) => {
+  const condition = 'id = ' + id;
+  Student.findOne('*', 'students', condition, student => {
     done(null, student);
   });
 });
@@ -29,15 +29,15 @@ passport.use(
     {
       usernameField: 'email'
     },
-    function(email, password, done) {
-      var condition = 'email = "' + email + '"';
-      Student.findOne('*', 'students', condition, function(results) {
+    (email, password, done) => {
+      const condition = 'email = "' + email + '"';
+      Student.findOne('*', 'students', condition, results => {
         if (!results[0]) {
           console.log('Unknown Username');
           return done(null, false, { message: 'Unknown Username' });
         }
-        var student = results[0];
-        var studentPassword = student.password;
+        const student = results[0];
+        const studentPassword = student.password;
         bcrypt
           .compare(password, studentPassword)
           .then(function(isMatch) {
@@ -65,4 +65,4 @@ router.post(
   })
 );
 
-module.exports = router;
+export default router;
