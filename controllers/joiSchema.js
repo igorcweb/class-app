@@ -1,6 +1,6 @@
-var Joi = require('joi');
+const Joi = require('joi');
 
-var schema = Joi.object().keys({
+const schema = Joi.object().keys({
   firstname: Joi.string()
     .trim()
     .required()
@@ -24,4 +24,4 @@ var schema = Joi.object().keys({
     .error(new Error('Passwords do not match'))
 });
 
-module.exports = schema;
+export default schema;

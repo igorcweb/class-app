@@ -1,27 +1,26 @@
-var express = require('express');
-var router = express.Router();
-var Joi = require('joi');
-var bcrypt = require('bcryptjs');
-var ensureLoggedOut = require('../helpers/authMiddleware').ensureLoggedOut;
+import express from 'express';
+const router = express.Router();
+import Joi from 'joi';
+import bcrypt from 'bcryptjs';
+import { ensureLoggedOut } from '../helpers/authMiddleware';
+import Student from '../models/student';
+import schema from './joiSchema';
 
-var Student = require('../models/student');
-var schema = require('./joiSchema');
-
-router.get('/', ensureLoggedOut, function(req, res) {
+router.get('/', ensureLoggedOut, (req, res) => {
   res.render('signup');
 });
 
-router.post('/', function(req, res) {
-  var condition = 'email = "' + req.body.email + '"';
-  Joi.validate(req.body, schema, function(err) {
-    var newStudent = {
+router.post('/', (req, res) => {
+  const condition = 'email = "' + req.body.email + '"';
+  Joi.validate(req.body, schema, err => {
+    const newStudent = {
       first_name: req.body.firstname.trim(),
       last_name: req.body.lastname.trim(),
       email: req.body.email.trim(),
       password: req.body.password.trim()
     };
     if (!err) {
-      Student.findOne('email', 'students', condition, function(result) {
+      Student.findOne('email', 'students', condition, result => {
         if (result[0]) {
           req.flash(
             'error',
@@ -32,18 +31,18 @@ router.post('/', function(req, res) {
           });
         } else {
           // Encrypting password
-          bcrypt.genSalt(10, function(err, salt) {
-            bcrypt.hash(newStudent.password, salt, function(err, hash) {
+          bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(newStudent.password, salt, (err, hash) => {
               if (err) {
                 throw err;
               }
               newStudent.password = hash;
-              var { first_name, last_name, email, password } = newStudent;
+              const { first_name, last_name, email, password } = newStudent;
               Student.insertOne(
                 'students',
                 ['first_name', 'last_name', 'email', 'password'],
                 [first_name, last_name, email, password],
-                function(result) {
+                result => {
                   console.log(result);
                 }
               );
@@ -60,4 +59,4 @@ router.post('/', function(req, res) {
   });
 });
 
-module.exports = router;
+export default router;

@@ -1,10 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var ensureAuthenticated = require('../helpers/authMiddleware')
-  .ensureAuthenticated;
+import express from 'express';
+const router = express.Router();
+import { ensureAuthenticated } from '../helpers/authMiddleware';
 
-router.get('/', ensureAuthenticated, function(req, res) {
-  var { id, first_name, last_name, registeredIds } = req.user[0];
+router.get('/', ensureAuthenticated, (req, res) => {
+  const { id, first_name, last_name, registeredIds } = req.user[0];
   res.render('index', {
     success: req.flash('success'),
     id,
@@ -14,4 +13,4 @@ router.get('/', ensureAuthenticated, function(req, res) {
   });
 });
 
-module.exports = router;
+export default router;
