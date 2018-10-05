@@ -3,6 +3,7 @@
   const cart = $('.cart');
   const addedClasses = $('.addedClasses');
   const addedClassesReg = $('.addedClassesReg');
+  const numFormat = new Intl.NumberFormat('en-US');
   let subtotal = 0;
   let selectedIds;
   if (!selectedIds) {
@@ -95,9 +96,9 @@
         subtotal += parseFloat(tuition);
         const fees = (subtotal / 100) * 6;
         const total = subtotal + fees;
-        $('.subtotal').text(subtotal.toFixed(2));
-        $('#fees').text(fees.toFixed(2));
-        $('#total').text(total.toFixed(2));
+        $('.subtotal').text(numFormat.format(subtotal.toFixed(2)));
+        $('#fees').text(numFormat.format(fees.toFixed(2)));
+        $('#total').text(numFormat.format(total.toFixed(2)));
         $this.addClass('selected');
         cart.addClass('show');
         // Display Class Name in Card When Selected
@@ -118,7 +119,9 @@
               `<i class="fas fa-times" data-class-id="${classId}"></i>` +
               `</li><hr>`;
             const classTitleReg = `
-            <li class="mb-1 added-class">${name}, ${semester}<br>Tuition: $${tuition}</li><hr>
+            <li class="mb-1 added-class">${name}, ${semester}<br>Tuition: $${numFormat.format(
+              tuition
+            )}</li><hr>
           `;
             addedClasses.append(classTitle);
             addedClassesReg.append(classTitleReg);
@@ -153,7 +156,7 @@
             if (!subtotal) {
               $(proceed).attr('disabled', true);
             }
-            $('.subtotal').text(subtotal.toFixed(2));
+            $('.subtotal').text(numFormat.format(subtotal.toFixed(2)));
             const indexToRemove = selectedIds.indexOf(obj.id.toString());
             selectedIds.splice(indexToRemove, 1);
           }
@@ -182,7 +185,9 @@
             <hr>
             `;
             const classTitleReg = `
-            <li class="mb-1 added-class">${name}, ${semester}<br>Tuition: $${tuition}</li><hr>
+            <li class="mb-1 added-class">${name}, ${semester}<br>Tuition: $${numFormat.format(
+              tuition
+            )}</li><hr>
           `;
             addedClasses.append(classTitle);
             addedClassesReg.append(classTitleReg);
