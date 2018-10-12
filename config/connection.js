@@ -1,6 +1,6 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 dotenv.config();
-import mysql from 'mysql2';
+const mysql = require('mysql2');
 
 const { DB_USER, DB_PASS, DB_NAME, JAWSDB_URL } = process.env;
 
@@ -31,4 +31,4 @@ connection.connect(err => {
   console.log('connected with', host);
 });
 
-export default connection;
+module.exports = connection;

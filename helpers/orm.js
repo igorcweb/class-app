@@ -1,4 +1,4 @@
-export const printQuestionMarks = num => {
+const printQuestionMarks = num => {
   const arr = [];
 
   for (let i = 0; i < num; i++) {
@@ -7,3 +7,5 @@ export const printQuestionMarks = num => {
 
   return arr.toString();
 };
+
+module.exports = { printQuestionMarks };

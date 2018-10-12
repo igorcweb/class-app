@@ -1,6 +1,6 @@
-import express from 'express';
+const express = require('express');
 const router = express.Router();
-import Class from '../../models/class';
+const Class = require('../../models/class');
 
 router.get('/', (req, res) => {
   Class.selectAll('classes', results => {
@@ -52,4 +52,4 @@ router.put('/drop/:id', (req, res) => {
   });
 });
 
-export default router;
+module.exports = router;

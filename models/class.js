@@ -1,4 +1,4 @@
-import orm from '../config/orm';
+const orm = require('../config/orm');
 
 const Class = {
   insertOne: (table, cols, vals, cb) => {
@@ -23,4 +23,4 @@ const Class = {
   }
 };
 
-export default Class;
+module.exports = Class;

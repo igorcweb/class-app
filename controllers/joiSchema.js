@@ -1,4 +1,4 @@
-import Joi from 'joi';
+const Joi = require('joi');
 
 const schema = Joi.object().keys({
   firstname: Joi.string()
@@ -24,4 +24,4 @@ const schema = Joi.object().keys({
     .error(new Error('Passwords do not match'))
 });
 
-export default schema;
+module.exports = schema;

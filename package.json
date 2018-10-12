@@ -4,7 +4,8 @@
   "description": "class registration app",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server --exec babel-node --presets env"
+    "start": "node server",
+    "watch": "nodemon server"
   },
   "authors": "Igor Chernyshev, Sterling Smith, Cody Clark",
   "license": "ISC",
@@ -22,13 +23,11 @@
     "passport": "^0.4.0",
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
-    "dotenv": "^6.0.0",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
+    "dotenv": "^6.0.0"
+  },
+  "devDependencies": {
     "nodemon": "^1.18.4"
   },
-  "devDependencies": {},
   "engines": {
     "node": "10.9.0"
   },

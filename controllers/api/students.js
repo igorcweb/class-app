@@ -1,6 +1,6 @@
-import express from 'express';
+const express = require('express');
 const router = express.Router();
-import Student from '../../models/student';
+const Student = require('../../models/student');
 
 router.get('/', (req, res) => {
   Student.selectAll('students', results => {
@@ -60,4 +60,4 @@ router.put('/drop/:id', (req, res) => {
   });
 });
 
-export default router;
+module.exports = router;

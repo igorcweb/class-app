@@ -1,4 +1,4 @@
-import orm from '../config/orm';
+const orm = require('../config/orm');
 
 const Student = {
   insertOne: (table, cols, vals, cb) => {
@@ -23,4 +23,4 @@ const Student = {
   }
 };
 
-export default Student;
+module.exports = Student;

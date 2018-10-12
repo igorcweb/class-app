@@ -1,5 +1,5 @@
-import connection from './connection';
-import { printQuestionMarks } from '../helpers/orm';
+const connection = require('./connection');
+const printQuestionMarks = require('../helpers/orm').printQuestionMarks;
 
 const orm = {
   selectAll: (table, cb) => {
@@ -55,4 +55,4 @@ const orm = {
   }
 };
 
-export default orm;
+module.exports = orm;

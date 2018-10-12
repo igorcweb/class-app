@@ -1,10 +1,10 @@
-import express from 'express';
+const express = require('express');
 const router = express.Router();
-import Joi from 'joi';
-import bcrypt from 'bcryptjs';
-import { ensureLoggedOut } from '../helpers/authMiddleware';
-import Student from '../models/student';
-import schema from './joiSchema';
+const Joi = require('joi');
+const bcrypt = require('bcryptjs');
+const ensureLoggedOut = require('../helpers/authMiddleware').ensureLoggedOut;
+const Student = require('../models/student');
+const schema = require('./joiSchema');
 
 router.get('/', ensureLoggedOut, (req, res) => {
   res.render('signup');
@@ -59,4 +59,4 @@ router.post('/', (req, res) => {
   });
 });
 
-export default router;
+module.exports = router;

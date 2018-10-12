@@ -1,6 +1,7 @@
-import express from 'express';
+const express = require('express');
 const router = express.Router();
-import { ensureAuthenticated } from '../helpers/authMiddleware';
+const ensureAuthenticated = require('../helpers/authMiddleware')
+  .ensureAuthenticated;
 
 router.get('/', ensureAuthenticated, (req, res) => {
   const { id, first_name, last_name, registeredIds } = req.user[0];
@@ -13,4 +14,4 @@ router.get('/', ensureAuthenticated, (req, res) => {
   });
 });
 
-export default router;
+module.exports = router;

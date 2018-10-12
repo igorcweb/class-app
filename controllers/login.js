@@ -1,10 +1,10 @@
-import express from 'express';
+const express = require('express');
 const router = express.Router();
-import { ensureLoggedOut } from '../helpers/authMiddleware';
-import bcrypt from 'bcryptjs';
-import passport from 'passport';
-import { Strategy as LocalStrategy } from 'passport-local';
-import Student from '../models/student';
+const ensureLoggedOut = require('../helpers/authMiddleware').ensureLoggedOut;
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const Student = require('../models/student');
 
 router.get('/', ensureLoggedOut, (req, res) => {
   res.render('login', {
@@ -65,4 +65,4 @@ router.post(
   })
 );
 
-export default router;
+module.exports = router;

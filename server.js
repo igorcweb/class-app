@@ -1,24 +1,23 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 dotenv.config();
-import express from 'express';
+const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-import exphbs from 'express-handlebars';
-import cookieParser from 'cookie-parser';
-import session from 'express-session';
-import passport from 'passport';
-import flash from 'connect-flash';
-import expressMessages from 'express-messages';
+const exphbs = require('express-handlebars');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport');
+const flash = require('connect-flash');
+const expressMessages = require('express-messages');
 const { SESSION_SECRET } = process.env;
 
-import routes from './controllers';
-import signup from './controllers/signup';
-import login from './controllers/login';
-import logout from './controllers/logout';
-import classes from './controllers/api/classes';
-import students from './controllers/api/students';
-import catalogue from './controllers/catalogue';
-
+const routes = require('./controllers');
+const signup = require('./controllers/signup');
+const login = require('./controllers/login');
+const logout = require('./controllers/logout');
+const classes = require('./controllers/api/classes');
+const students = require('./controllers/api/students');
+const catalogue = require('./controllers/catalogue');
 //Express native body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -1,10 +1,10 @@
-import express from 'express';
+const express = require('express');
 const router = express.Router();
-import Class from '../models/class';
+const Class = require('../models/class');
 
 //Only run this code to reseed classes data after running the schema file first.
 
-// import classes from '../db/classes';
+// const classes = require('../db/classes');
 // classes.forEach(classObj => {
 //   const { name, code, semester, availableSpaces, description } = classObj;
 //   Class.insertOne(
@@ -31,4 +31,4 @@ router.get('/', (req, res) => {
   });
 });
 
-export default router;
+module.exports = router;
