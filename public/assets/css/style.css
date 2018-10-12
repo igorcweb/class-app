@@ -262,7 +262,7 @@ li.class-content.is-open {
 .card-title-img {
   position: relative;
   background: linear-gradient(rgba(58, 55, 55, 0.1), rgba(103, 29, 29, 0.5)),
-    url('/assets/images/cart.png') center / cover;
+    url('/assets/images/cart.jpeg') center / cover;
   height: 150px;
 }
 
